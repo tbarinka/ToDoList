@@ -17,6 +17,11 @@ body { padding: 0; margin: 0; font-family: Arial, sans-serif }
     padding-left: 10px;
     padding-right: 10px;
 }
+.sidebarIntegratedItem2 {
+    display: flex;
+    flex-direction: column;
+}
+
 .sideBarRightComponentButtonContainer {
     width: 30px;
     height: 30px;
@@ -28,4 +33,30 @@ body { padding: 0; margin: 0; font-family: Arial, sans-serif }
 .sideBarRightComponentButton {
     width: 30px;
     height: 30px;
+}
+
+/* new List Popup */
+.newListCard {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+    height: 250px;
+    width: 500px;
+    border: solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.newListCardButton {
+    height: 30px;
+    width: 80px;
 }

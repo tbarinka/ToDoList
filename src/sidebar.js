@@ -1,5 +1,6 @@
 import './style.css';
 import plus from './images/plus.png';
+import { addListCardDOMLoad } from './addListPopup.js'
 
 function loadSidebarDOM() {
     const content = document.getElementById('content')
@@ -17,13 +18,18 @@ export { loadSidebarDOM }
 
 function sidebarItemIntegrater(title, toggleRightComponent) {
     const div = document.createElement('div');
-    div.classList.add('sidebarIntegratedItem');
     
     if (toggleRightComponent == "y") {
-        div.appendChild(leftSidebarComponent(title))
-        div.appendChild(rightSidebarAddItem());
+        const top = document.createElement('div');
+            top.classList.add('sidebarIntegratedItem');
+        top.appendChild(leftSidebarComponent(title));
+        top.appendChild(rightSidebarAddItem());
+        div.appendChild(top);
+        div.appendChild(listsContent());
+            div.classList.add('sidebarIntegratedItem2');
     } else {
-        div.appendChild(leftSidebarComponent(title))
+        div.appendChild(leftSidebarComponent(title));
+            div.classList.add('sidebarIntegratedItem');
         const item = document.createElement('div');
             item.classList.add('SideBarItemRightComponent');
         div.appendChild(item);
@@ -59,6 +65,17 @@ function rightSidebarAddItem() {
         const addBtn = new Image();
             addBtn.src = plus;
             addBtn.classList.add('sideBarRightComponentButton')
+            addBtn.addEventListener('click', () => addListCardDOMLoad());
         button.appendChild(addBtn);
         return button;
         }
+
+
+function listsContent() {
+    const div = document.createElement('div');
+    div.classList.add("lists");
+    const p = document.createElement("p");
+    p.textContent = "Here is some text just to get started."
+    div.appendChild(p);
+    return div;
+}
