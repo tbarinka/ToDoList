@@ -1,28 +1,26 @@
 import './style.css';
 
+
 function addListCardDOMLoad(s1, s2) {
-    const content = document.getElementById('content');
+    //const content = document.getElementById('content');
     const card = document.createElement('div');
         card.classList.add('newListCard');
-
     card.appendChild(cardInput());
     card.appendChild(buttonIntegrator(s1, s2));
 
-    
+    //event listener: pushes user text into userLists array when click 'create';
     card.lastChild.lastChild.addEventListener('click', (event) => {
-        const name = card.firstChild.firstChild.value;
+        let name = card.firstChild.firstChild.value;
         pushToUserLists(name);
+        card.firstChild.firstChild.value = "";
+        const lists = content.firstChild.nextSibling.lastChild.lastChild;
     });
-    //card.lastChild.firstChild.addEventListener('click', (event) => {
-        //console.log(userLists);
-    //})
-
-    content.appendChild(card);
+    return card;
 }
 function cardInput() {
     const div = document.createElement('div');
         div.classList.add('cardTextBorder');
-    const inputText = document.createElement('textarea');
+    const inputText = document.createElement('input');
         inputText.classList.add('cardInputText');
     div.appendChild(inputText);
 
@@ -48,13 +46,27 @@ function cardButton(s) {
 
 const userLists = [];
 
-function createListObject(name) {
-    return { name }
-}
+    function createListArrayObject(name) {
+        return { name }
+    }
 
-function pushToUserLists(name) {
-    userLists.push(createListObject(name));
-    console.log(userLists[0].name);
-}
+    function pushToUserLists(name) {
+        userLists.push(createListArrayObject(name));
+        console.log(userLists[0].name);
+    }
+
+    function createDOMListItems() {
+        const item = document.createElement("div");
+        item.textContent = "";
+
+        for (let i = 0; i < userLists.length; i++) {
+            console.log(userLists[i].name);
+          }
+
+        //const p = document.createElement("p");
+        //p.textContent = itemName;
+        //item.appendChild(p);
+        //return item;
+    }
 
 export { addListCardDOMLoad, userLists }
