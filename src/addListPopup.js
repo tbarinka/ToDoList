@@ -8,6 +8,15 @@ function addListCardDOMLoad(s1, s2) {
     card.appendChild(cardInput());
     card.appendChild(buttonIntegrator(s1, s2));
 
+    
+    card.lastChild.lastChild.addEventListener('click', (event) => {
+        const name = card.firstChild.firstChild.value;
+        pushToUserLists(name);
+    });
+    //card.lastChild.firstChild.addEventListener('click', (event) => {
+        //console.log(userLists);
+    //})
+
     content.appendChild(card);
 }
 function cardInput() {
@@ -37,7 +46,15 @@ function cardButton(s) {
     return button;
 }
 
-userLists = [];
+const userLists = [];
 
+function createListObject(name) {
+    return { name }
+}
 
-export { addListCardDOMLoad }
+function pushToUserLists(name) {
+    userLists.push(createListObject(name));
+    console.log(userLists[0].name);
+}
+
+export { addListCardDOMLoad, userLists }
