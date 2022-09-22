@@ -1,3 +1,31 @@
+body { padding: 0; margin: 0; font-family: Arial, sans-serif }
+
 #content {
     display: flex;
+}
+
+/*sidebar*/
+.sidebar {
+    background-color: #f8fafc;
+    height: 100vh;
+    width: 296px;
+}
+.sidebarIntegratedItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.sideBarRightComponentButtonContainer {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8fafc;
+}
+.sideBarRightComponentButton {
+    width: 30px;
+    height: 30px;
 }
