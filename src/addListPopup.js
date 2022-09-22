@@ -12,11 +12,14 @@ function addListCardDOMLoad(s1, s2) {
     card.lastChild.lastChild.addEventListener('click', (event) => {
         let name = card.firstChild.firstChild.value;
         pushToUserLists(name);
-        card.firstChild.firstChild.value = "";
-        const lists = content.firstChild.nextSibling.lastChild.lastChild;
+        let lists = content.firstChild.nextSibling.lastChild.lastChild;
+        lists.textContent = "";
+        lists.appendChild(createDOMListItems());
+        card.remove();
     });
-    return card;
+    content.appendChild(card);
 }
+
 function cardInput() {
     const div = document.createElement('div');
         div.classList.add('cardTextBorder');
@@ -52,21 +55,20 @@ const userLists = [];
 
     function pushToUserLists(name) {
         userLists.push(createListArrayObject(name));
-        console.log(userLists[0].name);
+        console.log(userLists);
     }
 
     function createDOMListItems() {
         const item = document.createElement("div");
-        item.textContent = "";
 
         for (let i = 0; i < userLists.length; i++) {
             console.log(userLists[i].name);
+            const p = document.createElement("p");
+            p.textContent = userLists[i].name;
+            item.appendChild(p);
           }
 
-        //const p = document.createElement("p");
-        //p.textContent = itemName;
-        //item.appendChild(p);
-        //return item;
+        return item;
     }
 
 export { addListCardDOMLoad, userLists }
