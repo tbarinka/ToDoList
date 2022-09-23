@@ -1,6 +1,6 @@
 import './style.css';
 import plus from './images/plus.png';
-import { addListCardDOMLoad, userLists } from './addListPopup.js'
+import { addListCardDOMLoad } from './createListDOM.js'
 
 function loadSidebarDOM() {
     const content = document.getElementById('content')
@@ -8,17 +8,26 @@ function loadSidebarDOM() {
         sidebar.classList.add('sidebar');
 
     content.appendChild(sidebar);
+    sidebar.appendChild(createTaskButton());
     sidebar.appendChild(sidebarItemIntegrater("Home"));
     sidebar.appendChild(sidebarItemIntegrater("Today"));
     sidebar.appendChild(sidebarItemIntegrater("This Week"));
     sidebar.appendChild(sidebarItemIntegrater("Lists", "y"));
+}
 
+function createTaskButton() {
+    const div = document.createElement('div');
+        div.classList.add('SidebarAddTaskButton')
+    const button = document.createElement('button');
+        button.classList.add('createTask');
+        button.textContent = "+ Create a Task"
+    div.appendChild(button);
+    return div;
 }
 
 
 function sidebarItemIntegrater(title, toggleRightComponent) {
     const div = document.createElement('div');
-    
     if (toggleRightComponent == "y") {
         const top = document.createElement('div');
             top.classList.add('sidebarIntegratedItem');
@@ -35,7 +44,6 @@ function sidebarItemIntegrater(title, toggleRightComponent) {
         div.appendChild(item);
     }
     return div;
-
 }
 
 function leftSidebarComponent(title) {
@@ -80,6 +88,5 @@ function listsContent() {
     div.appendChild(p);
     return div;
 }
-
 
 export { loadSidebarDOM }
