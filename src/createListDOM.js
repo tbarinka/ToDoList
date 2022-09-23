@@ -18,6 +18,12 @@ function addListCardDOMLoad(s1, s2) {
         lists.appendChild(createDOMListItems());
         card.remove();
     });
+    //cancel button event listener --> removes card from DOM
+    card.lastChild.firstChild.addEventListener('click', (event) => {
+        let name = card.lastChild.firstChild;
+        console.log(name);
+        card.remove();
+    });
     content.appendChild(card);
 }
 
@@ -47,7 +53,5 @@ function cardButton(s) {
     button.appendChild(buttonText);
     return button;
 }
-
-
 
 export { addListCardDOMLoad }

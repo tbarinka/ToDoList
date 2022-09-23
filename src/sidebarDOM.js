@@ -1,6 +1,7 @@
 import './style.css';
 import plus from './images/plus.png';
 import { addListCardDOMLoad } from './createListDOM.js'
+import { createTaskDOMLoad } from './createTaskDOM.js'
 
 function loadSidebarDOM() {
     const content = document.getElementById('content')
@@ -21,6 +22,8 @@ function createTaskButton() {
     const button = document.createElement('button');
         button.classList.add('createTask');
         button.textContent = "+ Create a Task"
+        button.addEventListener('click', () => createTaskDOMLoad());
+    
     div.appendChild(button);
     return div;
 }

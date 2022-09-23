@@ -1,5 +1,4 @@
 
-
 const userLists = [];
 
 function createListArrayObject(name) {
