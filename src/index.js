@@ -3,4 +3,4 @@ import { loadSidebarDOM } from './sidebarDOM.js';
 import { mainDOMLoad } from './mainDOM.js'
 
 loadSidebarDOM();
-mainDOMLoad("List Title", "Item Title");
+//mainDOMLoad("List Title", "Item Title");

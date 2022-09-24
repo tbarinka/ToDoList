@@ -2,6 +2,7 @@ import './style.css';
 import plus from './images/plus.png';
 import { addListCardDOMLoad } from './createListDOM.js'
 import { createTaskDOMLoad } from './createTaskDOM.js'
+import { mainDOMLoad } from './mainDOM.js'
 
 function loadSidebarDOM() {
     const content = document.getElementById('content')
@@ -84,10 +85,13 @@ function rightSidebarAddItem() {
 
 function listsContent() {
     const div = document.createElement('div');
-    div.classList.add("lists-container");
-    div.setAttribute('id', "lists-container")
+        div.classList.add("lists-container");
+        div.setAttribute('id', "lists-container")
     const p = document.createElement("p");
     p.textContent = "Here is some text just to get started."
+
+        p.addEventListener('click', () => mainDOMLoad("List Title", "Item Title"));
+
     div.appendChild(p);
     return div;
 }
