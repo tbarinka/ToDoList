@@ -8,37 +8,58 @@ function createTaskDOMLoad() {
 
     const card = document.createElement('div');
         card.classList.add('newListCard');
-    card.appendChild(taskTitle());
+    card.appendChild(taskInfo());
     card.appendChild(buttonIntegrator('Cancel', 'Add Task'));
     content.appendChild(card);
-
         //cancel button event listener --> removes card from DOM
         card.lastChild.firstChild.addEventListener('click', (event) => {
             let name = card.lastChild.firstChild;
             console.log(name);
             card.remove();
         });
-
-            //event listener on create button
+        //event listener on create button
         card.lastChild.lastChild.addEventListener('click', (event) => {
-            pushTaskToArray(card.firstChild.lastChild.value);
+            console.log(card.firstChild.firstChild.lastChild.value);
+            console.log(card.firstChild.lastChild.lastChild.value);
+            pushTaskToArray(card.firstChild.firstChild.lastChild.value, card.firstChild.lastChild.lastChild.value);
             card.remove();
         });
 };
 
-function taskTitle(name) {
+function taskInfo() {
     const div = document.createElement('div');
         div.classList.add('cardTextBorder');
-    const inputText = document.createElement('input');
-        inputText.classList.add('cardInputText');
-        inputText.setAttribute("id", "cardInput");
-    const label = document.createElement('label');
-        label.setAttribute("for", "cardInput");
-        label.textContent = "Task Title: ";
-    div.appendChild(label);
-    div.appendChild(inputText);
+    div.appendChild(taskTitle());
+    div.appendChild(taskList());
     return div;
 };
+
+    function taskTitle() {
+        const div = document.createElement('div');
+            div.classList.add('taskInfoItemContainer');
+        const title = document.createElement('input');
+            title.classList.add('cardInputText');
+            title.setAttribute("id", "cardInput");
+        const titleLabel = document.createElement('label');
+            titleLabel.setAttribute("for", "cardInput");
+            titleLabel.textContent = "Task Title: ";
+        div.appendChild(titleLabel);
+        div.appendChild(title);
+        return div;
+    }
+    function taskList() {
+        const div = document.createElement('div');
+            div.classList.add('taskInfoItemContainer');
+        const list = document.createElement('input');
+            list.classList.add('cardInputText');
+            list.setAttribute("id", "cardInput");
+        const listLabel = document.createElement('label');
+            listLabel.setAttribute("for", "cardInput");
+            listLabel.textContent = "List: ";
+        div.appendChild(listLabel);
+        div.appendChild(list);
+        return div;
+    }
 
 function buttonIntegrator(s1, s2) {
     const div = document.createElement('div');

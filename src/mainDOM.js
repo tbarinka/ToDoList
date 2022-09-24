@@ -21,7 +21,7 @@ function mainDOMLoad(listTitle, itemTitle) {
 
 function mainIntegrator(lTitle, iTitle) {
     const integratedItem = document.createElement('div');
-    integratedItem.classList.add('integratedItem');
+        integratedItem.classList.add('integratedItem');
     
     integratedItem.appendChild(listTitle(lTitle));
     integratedItem.appendChild(listContentContainer(iTitle));

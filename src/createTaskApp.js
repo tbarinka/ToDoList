@@ -3,19 +3,17 @@ import { userLists } from './createListApp.js'
 let userTasks = [];
 
 class Task {
-    constructor(name) {
-        this.name = name;
+    constructor(title, list) {
+        this.title = title;
         //this.date = date;
-        //this.list = list;
+        this.list = list;
     } 
 
 }
 
-function pushTaskToArray(task) {
-    const t = new Task(task);
+function pushTaskToArray(title, list) {
+    const t = new Task(title, list);
     userTasks.push(t);
-    console.log(userTasks);
-    console.log(userTasks[0].name);
 }
 
 function filterTasksbyList(List) {
