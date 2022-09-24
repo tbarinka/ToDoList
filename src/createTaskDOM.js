@@ -2,6 +2,7 @@
 //should integrate them under a single file.
 
 import './style.css';
+import { Task, pushTaskToArray, userTasks } from './createTaskApp.js';
 
 function createTaskDOMLoad() {
 
@@ -20,7 +21,7 @@ function createTaskDOMLoad() {
 
             //event listener on create button
         card.lastChild.lastChild.addEventListener('click', (event) => {
-
+            pushTaskToArray(card.firstChild.lastChild.value);
             card.remove();
         });
 };
