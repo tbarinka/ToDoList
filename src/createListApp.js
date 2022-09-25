@@ -1,3 +1,4 @@
+import { Task, pushTaskToArray, userTasks } from './createTaskApp.js';
 
 const userLists = [];
 
@@ -10,17 +11,13 @@ function pushToUserLists(name) {
     console.log(userLists);
 }
 
-function createDOMListItems() {
-    const item = document.createElement("div");
 
-    for (let i = 0; i < userLists.length; i++) {
-        console.log(userLists[i].name);
-        const p = document.createElement("p");
-        p.textContent = userLists[i].name;
-        item.appendChild(p);
-      }
-
-    return item;
+//this returns an array containing the tasks that belong to a list named in (string)
+function filterTaskstoList(listTitle) {
+    const filteredTasks = userTasks.filter(function(task) {
+        console.log(task.list == listTitle);
+        if (task.list == listTitle) return task.title;
+    });
 }
 
-export { userLists, pushToUserLists, createDOMListItems }
+export { userLists, pushToUserLists, filterTaskstoList }

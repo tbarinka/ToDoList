@@ -1,0 +1,11 @@
+
+
+I have created a filter "filterTaskstoList(string)" to fill an array with
+tasks that belong to a certain list represented by "string"
+
+I need to rework the functions on mainDOM.js, roughly so that by invoking:
+        mainDOMLoad(listTitle)
+performs the following work:
+        1. run filterTaskstoList(listTitle) to return an array of tasks
+        2. Generate DOM elements on main containing the items in the array
+

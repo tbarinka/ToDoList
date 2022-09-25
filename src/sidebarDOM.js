@@ -3,6 +3,7 @@ import plus from './images/plus.png';
 import { addListCardDOMLoad } from './createListDOM.js'
 import { createTaskDOMLoad } from './createTaskDOM.js'
 import { mainDOMLoad } from './mainDOM.js'
+import { filterTaskstoList } from './createListApp.js'
 
 function loadSidebarDOM() {
     const content = document.getElementById('content')
@@ -16,7 +17,6 @@ function loadSidebarDOM() {
     sidebar.appendChild(sidebarItemIntegrater("This Week"));
     sidebar.appendChild(sidebarItemIntegrater("Lists", "y"));
 }
-
 function createTaskButton() {
     const div = document.createElement('div');
         div.classList.add('SidebarAddTaskButton')
@@ -28,8 +28,6 @@ function createTaskButton() {
     div.appendChild(button);
     return div;
 }
-
-
 function sidebarItemIntegrater(title, toggleRightComponent) {
     const div = document.createElement('div');
     if (toggleRightComponent == "y") {
@@ -49,7 +47,6 @@ function sidebarItemIntegrater(title, toggleRightComponent) {
     }
     return div;
 }
-
 function leftSidebarComponent(title) {
     const item = document.createElement('div');
         item.classList.add('SideBarItemLeftComponent');
@@ -87,12 +84,12 @@ function listsContent() {
     const div = document.createElement('div');
         div.classList.add("lists-container");
         div.setAttribute('id', "lists-container")
-    const p = document.createElement("p");
-    p.textContent = "Here is some text just to get started."
-
-        p.addEventListener('click', () => mainDOMLoad("List Title", "Item Title"));
-
-    div.appendChild(p);
+    //const p = document.createElement("p");
+    //p.textContent = "List"
+        //p.addEventListener('click', () => (
+            //filterTaskstoList(p.textContent)
+        //));
+    //div.appendChild(p);
     return div;
 }
 

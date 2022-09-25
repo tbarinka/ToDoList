@@ -1,5 +1,6 @@
 import './style.css';
-import { UserLists, pushToUserLists, createDOMListItems } from './createListApp.js'
+import { userLists, pushToUserLists } from './createListApp.js';
+import { filterTaskstoList } from './createListApp.js';
 
 
 function addListCardDOMLoad(s1, s2) {
@@ -15,7 +16,7 @@ function addListCardDOMLoad(s1, s2) {
         pushToUserLists(name);
         let lists = content.firstChild.nextSibling.lastChild.lastChild;
         lists.textContent = "";
-        lists.appendChild(createDOMListItems());
+        lists.appendChild(loadDOMSidebarLists());
         card.remove();
     });
     //cancel button event listener --> removes card from DOM
@@ -27,6 +28,18 @@ function addListCardDOMLoad(s1, s2) {
     content.appendChild(card);
 }
 
+function loadDOMSidebarLists() {
+    const item = document.createElement("div");
+    userLists.forEach((userList) => {
+        let p = document.createElement("p");
+        p.textContent = userList.name;
+        p.addEventListener('click', () => (
+            filterTaskstoList(p.textContent)
+        ));
+        item.appendChild(p);
+    })
+    return item;
+}
 function cardInput() {
     const div = document.createElement('div');
         div.classList.add('cardTextBorder');
@@ -44,7 +57,6 @@ function buttonIntegrator(s1, s2) {
 
     return div;
 }
-
 function cardButton(s) {
     const button = document.createElement('button');
         button.classList.add('newListCardButton');
