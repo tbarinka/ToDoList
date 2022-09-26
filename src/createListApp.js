@@ -22,7 +22,7 @@ function filterTaskstoList(listTitle) {
     //});
     const filteredList = [];
     const filteredTasks = userTasks.filter(function(task) {
-        if (task.list == listTitle) filteredList.push(task.title);
+        if (task.list == listTitle) filteredList.push(task);
     });
     console.log(filteredList);
     return filteredList;

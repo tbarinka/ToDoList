@@ -1,30 +1,20 @@
 import './style.css';
+import { userLists, pushToUserLists, filterTaskstoList } from './createListApp.js';
 
-//Main Container
-//List Title
-    //Title Container
-    //Title Item
-//List Container
-//List Item
-    //Item Container
-    //Item Title
-    //Item Control Icon Container
-        //Item Control Icons
-
-function mainDOMLoad(listTitle, itemTitle) {
+function mainDOMLoad(listTitle) {
     const container = document.createElement('div');
         container.classList.add('mainContainer');
     
-    container.appendChild(mainIntegrator(listTitle, itemTitle))
+    container.appendChild(mainIntegrator(listTitle))
     content.appendChild(container);
 }
 
-function mainIntegrator(lTitle, iTitle) {
+function mainIntegrator(lTitle) {
     const integratedItem = document.createElement('div');
         integratedItem.classList.add('integratedItem');
     
     integratedItem.appendChild(listTitle(lTitle));
-    integratedItem.appendChild(listContentContainer(iTitle));
+    integratedItem.appendChild(listContentContainer(lTitle));
     return integratedItem;
 }
 
@@ -37,18 +27,25 @@ function listTitle(listTitle) {
     div.appendChild(header);
     return div;
 }
-function listContentContainer(itemTitle) {
+
+//this function should append all list items to a single container
+function listContentContainer(listTitle) {
     const container = document.createElement('div');
         container.classList.add('listContentContainer');
 
-    container.appendChild(listItemIntegrator(itemTitle));
+    const array = filterTaskstoList(listTitle)
+    array.forEach((element) => {
+        container.appendChild(listItemIntegrator(element.title.value));
+    });
     return container;
 }
 
+//this function integrates icon & title under a single list unit
 function listItemIntegrator(itemTitle) {
     const container = document.createElement('div');
         container.classList.add('listItemContainer');
     container.appendChild(listItem(itemTitle));
+    //when I upload the icons, append that to container
     return container;
 }
 function listItem(itemTitle) {
@@ -77,3 +74,16 @@ function listIcons() {
         //Item Control Icons
 
 export { mainDOMLoad }
+
+
+
+//Main Container
+//List Title
+    //Title Container
+    //Title Item
+//List Container
+//List Item
+    //Item Container
+    //Item Title
+    //Item Control Icon Container
+        //Item Control Icons

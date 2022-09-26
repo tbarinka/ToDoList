@@ -1,6 +1,7 @@
 import './style.css';
 import { userLists, pushToUserLists } from './createListApp.js';
 import { filterTaskstoList } from './createListApp.js';
+import { mainDOMLoad } from './mainDOM.js';
 
 
 function addListCardDOMLoad(s1, s2) {
@@ -34,7 +35,8 @@ function loadDOMSidebarLists() {
         let p = document.createElement("p");
         p.textContent = userList.name;
         p.addEventListener('click', () => (
-            filterTaskstoList(p.textContent)
+            //filterTaskstoList(p.textContent)
+            mainDOMLoad(p.textContent)
         ));
         item.appendChild(p);
     })
