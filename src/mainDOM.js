@@ -35,7 +35,8 @@ function listContentContainer(listTitle) {
 
     const array = filterTaskstoList(listTitle)
     array.forEach((element) => {
-        container.appendChild(listItemIntegrator(element.title.value));
+        console.log(element.title);
+        container.appendChild(listItemIntegrator(element.title));
     });
     return container;
 }
