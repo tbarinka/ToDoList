@@ -26,7 +26,11 @@ function addListCardDOMLoad(s1, s2) {
         console.log(name);
         card.remove();
     });
-    content.appendChild(card);
+    
+    if (document.body.nextSibling !== null) {
+        document.body.nextSibling.remove();
+    };
+    document.body.after(card);
 }
 
 function loadDOMSidebarLists() {

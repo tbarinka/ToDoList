@@ -11,7 +11,6 @@ function createTaskDOMLoad() {
         card.classList.add('newListCard');
     card.appendChild(taskInfo());
     card.appendChild(buttonIntegrator('Cancel', 'Add Task'));
-    content.appendChild(card);
         //cancel button event listener --> removes card from DOM
         card.lastChild.firstChild.addEventListener('click', (event) => {
             let name = card.lastChild.firstChild;
@@ -25,6 +24,11 @@ function createTaskDOMLoad() {
             pushTaskToArray(card.firstChild.firstChild.lastChild.value, card.firstChild.lastChild.lastChild.value);
             card.remove();
         });
+
+    if (document.body.nextSibling !== null) {
+        document.body.nextSibling.remove();
+    };
+    document.body.after(card);
 };
 
 function taskInfo() {
