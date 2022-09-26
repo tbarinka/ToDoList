@@ -14,10 +14,18 @@ function pushToUserLists(name) {
 
 //this returns an array containing the tasks that belong to a list named in (string)
 function filterTaskstoList(listTitle) {
+    //const filteredTasks = userTasks.filter(task.list == listTitle);
+    //console.log(filteredTasks);
+    //const filteredTasks = userTasks.filter(function(task) {
+        //console.log(task.list == listTitle);
+        //if (task.list == listTitle) return task.title;
+    //});
+    const filteredList = [];
     const filteredTasks = userTasks.filter(function(task) {
-        console.log(task.list == listTitle);
-        if (task.list == listTitle) return task.title;
+        if (task.list == listTitle) filteredList.push(task.title);
     });
+    console.log(filteredList);
+    return filteredList;
 }
 
 export { userLists, pushToUserLists, filterTaskstoList }
