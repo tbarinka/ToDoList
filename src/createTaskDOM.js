@@ -3,6 +3,7 @@
 
 import './style.css';
 import { Task, pushTaskToArray, userTasks } from './createTaskApp.js';
+import { userLists, pushToUserLists, filterTaskstoList } from './createListApp.js'
 
 function createTaskDOMLoad() {
 
@@ -50,12 +51,17 @@ function taskInfo() {
     function taskList() {
         const div = document.createElement('div');
             div.classList.add('taskInfoItemContainer');
-        const list = document.createElement('input');
-            list.classList.add('cardInputText');
-            list.setAttribute("id", "cardInput");
         const listLabel = document.createElement('label');
             listLabel.setAttribute("for", "cardInput");
             listLabel.textContent = "List: ";
+        const list = document.createElement('select');
+            list.classList.add('cardInputText');
+            list.setAttribute("id", "cardInput");
+        userLists.forEach(userList => {
+            const option = document.createElement('option');
+                option.innerHTML = userList.name;
+                list.appendChild(option);
+        })
         div.appendChild(listLabel);
         div.appendChild(list);
         return div;
