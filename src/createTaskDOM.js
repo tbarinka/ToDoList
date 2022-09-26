@@ -35,6 +35,7 @@ function taskInfo() {
     const div = document.createElement('div');
         div.classList.add('cardTextBorder');
     div.appendChild(taskTitle());
+    div.appendChild(taskDate());
     div.appendChild(taskList());
     return div;
 };
@@ -70,6 +71,21 @@ function taskInfo() {
         div.appendChild(list);
         return div;
     }
+    function taskDate() {
+        const div = document.createElement('div');
+            div.classList.add('taskInfoItemContainer');
+        const date = document.createElement('input');
+            date.classList.add('cardInputText');
+            date.setAttribute("type", "date");
+            date.setAttribute("id", "date");
+        const dateLabel = document.createElement('label');
+            dateLabel.setAttribute("type", "date");
+            dateLabel.setAttribute("for", "date");
+            dateLabel.textContent = "Date: ";
+        div.appendChild(dateLabel);
+        div.appendChild(date);
+        return div;
+    }
 
 function buttonIntegrator(s1, s2) {
     const div = document.createElement('div');
@@ -89,8 +105,5 @@ function cardButton(s) {
     return button;
 }
 
-function taskDate() {
-
-}
 
 export { createTaskDOMLoad }
