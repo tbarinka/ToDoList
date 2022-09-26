@@ -5,6 +5,7 @@ function mainDOMLoad(listTitle) {
     const container = document.createElement('div');
         container.classList.add('mainContainer');
     
+    content.lastChild.remove();
     container.appendChild(mainIntegrator(listTitle))
     content.appendChild(container);
 }
@@ -27,7 +28,6 @@ function listTitle(listTitle) {
     div.appendChild(header);
     return div;
 }
-
 //this function should append all list items to a single container
 function listContentContainer(listTitle) {
     const container = document.createElement('div');
