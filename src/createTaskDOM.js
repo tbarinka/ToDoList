@@ -19,9 +19,12 @@ function createTaskDOMLoad() {
         });
         //event listener on create button
         card.lastChild.lastChild.addEventListener('click', (event) => {
-            console.log(card.firstChild.firstChild.lastChild.value);
-            console.log(card.firstChild.lastChild.lastChild.value);
-            pushTaskToArray(card.firstChild.firstChild.lastChild.value, card.firstChild.lastChild.lastChild.value);
+            //console.log(card.firstChild.firstChild.lastChild.value);
+            //console.log(card.firstChild.lastChild.lastChild.value);
+            const date = document.getElementById('date');
+            const list = document.getElementById('list');
+            const title = document.getElementById('title');
+            pushTaskToArray(title.value, date.value, list.value);
             card.remove();
         });
 
@@ -45,9 +48,9 @@ function taskInfo() {
             div.classList.add('taskInfoItemContainer');
         const title = document.createElement('input');
             title.classList.add('cardInputText');
-            title.setAttribute("id", "cardInput");
+            title.setAttribute("id", "title");
         const titleLabel = document.createElement('label');
-            titleLabel.setAttribute("for", "cardInput");
+            titleLabel.setAttribute("for", "title");
             titleLabel.textContent = "Task Title: ";
         div.appendChild(titleLabel);
         div.appendChild(title);
@@ -61,7 +64,7 @@ function taskInfo() {
             listLabel.textContent = "List: ";
         const list = document.createElement('select');
             list.classList.add('cardInputText');
-            list.setAttribute("id", "cardInput");
+            list.setAttribute("id", "list");
         userLists.forEach(userList => {
             const option = document.createElement('option');
                 option.innerHTML = userList.name;

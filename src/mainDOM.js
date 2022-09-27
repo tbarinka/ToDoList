@@ -1,44 +1,82 @@
 import './style.css';
-import { userLists, pushToUserLists, filterTaskstoList } from './createListApp.js';
+import { userLists, pushToUserLists } from './createListApp.js';
+import { filterTaskstoList, sortTasksToHome } from './createTaskApp.js';
 
-function mainDOMLoad(listTitle) {
+//these functions govern how tasks are sorted/filtered into the main container
+
+//List Loader
+
+function mainDOMLoadList(listTitle) {
     const container = document.createElement('div');
         container.classList.add('mainContainer');
     
     content.lastChild.remove();
-    container.appendChild(mainIntegrator(listTitle))
+    container.appendChild(mainIntegratorListLoader(listTitle))
     content.appendChild(container);
 }
 
-function mainIntegrator(lTitle) {
+function mainIntegratorListLoader(title) {
     const integratedItem = document.createElement('div');
         integratedItem.classList.add('integratedItem');
     
-    integratedItem.appendChild(listTitle(lTitle));
-    integratedItem.appendChild(listContentContainer(lTitle));
+    integratedItem.appendChild(titleLoader(title));
+    integratedItem.appendChild(loadList(title));
     return integratedItem;
 }
 
-function listTitle(listTitle) {
-    const div = document.createElement('div');
-        div.classList.add('listTitleContainer');
-    const header = document.createElement('h1');
-        header.classList.add('listHeader')
-        header.textContent = listTitle;
-    div.appendChild(header);
-    return div;
-}
-//this function should append all list items to a single container
-function listContentContainer(listTitle) {
+function loadList(listTitle) {
     const container = document.createElement('div');
         container.classList.add('listContentContainer');
 
-    const array = filterTaskstoList(listTitle)
+    const array = filterTaskstoList(listTitle);
     array.forEach((element) => {
         console.log(element.title);
         container.appendChild(listItemIntegrator(element.title));
     });
     return container;
+}
+
+//Home Loader
+
+function mainDOMLoadHome() {
+    const container = document.createElement('div');
+        container.classList.add('mainContainer');
+    
+    content.lastChild.remove();
+    container.appendChild(mainIntegratorHomeLoader())
+    content.appendChild(container);
+}
+
+function mainIntegratorHomeLoader() {
+    const integratedItem = document.createElement('div');
+        integratedItem.classList.add('integratedItem');
+    
+    integratedItem.appendChild(titleLoader("Home"));
+    integratedItem.appendChild(loadHomeTasks());
+    return integratedItem;
+}
+
+function loadHomeTasks() {
+    const container = document.createElement('div');
+        container.classList.add('listContentContainer');
+    const array = sortTasksToHome();
+
+    array.forEach((element) => {
+        container.appendChild(listItemIntegrator(element.title));
+    });
+    return container;
+}
+
+// This function is repeated in each of the loader suites above
+
+function titleLoader(title) {
+    const div = document.createElement('div');
+        div.classList.add('titleContainer');
+    const header = document.createElement('h1');
+        header.classList.add('titleHeader')
+        header.textContent = title;
+    div.appendChild(header);
+    return div;
 }
 
 //this function integrates icon & title under a single list unit
@@ -74,7 +112,7 @@ function listIcons() {
     //Item Control Icon Container
         //Item Control Icons
 
-export { mainDOMLoad }
+export { mainDOMLoadList, mainDOMLoadHome }
 
 
 

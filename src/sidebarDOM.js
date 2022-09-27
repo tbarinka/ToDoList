@@ -2,8 +2,9 @@ import './style.css';
 import plus from './images/plus.png';
 import { addListCardDOMLoad } from './createListDOM.js'
 import { createTaskDOMLoad } from './createTaskDOM.js'
-import { mainDOMLoad } from './mainDOM.js'
+import { mainDOMLoadHome } from './mainDOM.js'
 import { filterTaskstoList } from './createListApp.js'
+import { sortTasksToHome } from './createTaskApp.js'
 
 function loadSidebarDOM() {
     const content = document.getElementById('content')
@@ -12,22 +13,31 @@ function loadSidebarDOM() {
 
     content.appendChild(sidebar);
     sidebar.appendChild(createTaskButton());
-    sidebar.appendChild(sidebarItemIntegrater("Home"));
+    sidebar.appendChild(createHome());
     sidebar.appendChild(sidebarItemIntegrater("Today"));
     sidebar.appendChild(sidebarItemIntegrater("This Week"));
     sidebar.appendChild(sidebarItemIntegrater("Lists", "y"));
 }
-function createTaskButton() {
-    const div = document.createElement('div');
-        div.classList.add('SidebarAddTaskButton')
-    const button = document.createElement('button');
-        button.classList.add('createTask');
-        button.textContent = "+ Create a Task"
-        button.addEventListener('click', () => createTaskDOMLoad());
-    
-    div.appendChild(button);
-    return div;
-}
+
+    //These functions add create individual sidebar items with event listeners
+    function createHome() {
+        const home = sidebarItemIntegrater("Home");
+        home.addEventListener('click', () => mainDOMLoadHome())
+        return home;
+    }
+
+
+    function createTaskButton() {
+        const div = document.createElement('div');
+            div.classList.add('SidebarAddTaskButton')
+        const button = document.createElement('button');
+            button.classList.add('createTask');
+            button.textContent = "+ Create a Task"
+            button.addEventListener('click', () => createTaskDOMLoad());
+        div.appendChild(button);
+        return div;
+    }
+
 function sidebarItemIntegrater(title, toggleRightComponent) {
     const div = document.createElement('div');
     if (toggleRightComponent == "y") {
