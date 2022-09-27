@@ -1,4 +1,5 @@
-import { userLists } from './createListApp.js'
+import { userLists } from './createListApp.js';
+import { format, isSameWeek, addWeeks } from 'date-fns';
 
 let userTasks = [];
 
@@ -33,6 +34,24 @@ function sortTasksToHome() {
     //console.log(sortedTasks);
     return sortedTasks;
 }
+function filterTodayTasks() {
+    var today = format(new Date(), 'YYY-MM-dd').toString();
+    const filteredTasks = userTasks.filter(function(task) {
+        if (today.includes(task.date)) return task;
+    })
+    return filteredTasks;
+}
+function filterThisWeekTasks() {
+    const filteredTasks = userTasks.filter(function(task) {
+        //console.log(task.date);
+        //console.log(new Date(task.date.replace("-", "/")));
+        //console.log(isSameWeek(new Date(), new Date(task.date.replace("-", "/"))));
+        //if isSameWeek(new Date(), new Date(task.date.replace("-", "/"))) return console.log("correct!");
 
 
-export { Task, pushTaskToArray, userTasks, filterTaskstoList, sortTasksToHome }
+        const weekBegin = new Date();
+        const weekTerminus = addWeeks(new Date(), 1);
+    });
+}
+
+export { Task, pushTaskToArray, userTasks, filterTaskstoList, sortTasksToHome, filterTodayTasks, filterThisWeekTasks }

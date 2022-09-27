@@ -1,31 +1,38 @@
 import './style.css';
 import plus from './images/plus.png';
-import { addListCardDOMLoad } from './createListDOM.js'
-import { createTaskDOMLoad } from './createTaskDOM.js'
-import { mainDOMLoadHome } from './mainDOM.js'
-import { filterTaskstoList } from './createListApp.js'
-import { sortTasksToHome } from './createTaskApp.js'
+import { addListCardDOMLoad } from './createListDOM.js';
+import { createTaskDOMLoad } from './createTaskDOM.js';
+import { mainDOMLoadHome, mainDOMLoadToday } from './mainDOM.js';
+import { filterTodayTasks, filterThisWeekTasks } from './createTaskApp.js'
 
 function loadSidebarDOM() {
     const content = document.getElementById('content')
     const sidebar = document.createElement('div');
         sidebar.classList.add('sidebar');
-
     content.appendChild(sidebar);
     sidebar.appendChild(createTaskButton());
     sidebar.appendChild(createHome());
-    sidebar.appendChild(sidebarItemIntegrater("Today"));
-    sidebar.appendChild(sidebarItemIntegrater("This Week"));
+    sidebar.appendChild(createToday());
+    sidebar.appendChild(createThisWeek());
     sidebar.appendChild(sidebarItemIntegrater("Lists", "y"));
 }
 
     //These functions add create individual sidebar items with event listeners
     function createHome() {
         const home = sidebarItemIntegrater("Home");
-        home.addEventListener('click', () => mainDOMLoadHome())
+        home.addEventListener('click', () => mainDOMLoadHome());
         return home;
     }
-
+    function createToday() {
+        const today = sidebarItemIntegrater("Today")
+        today.addEventListener('click', () => mainDOMLoadToday());
+        return today
+    }
+    function createThisWeek() {
+        const today = sidebarItemIntegrater("This Week")
+        today.addEventListener('click', () => filterThisWeekTasks());
+        return today
+    }
 
     function createTaskButton() {
         const div = document.createElement('div');
@@ -93,13 +100,7 @@ function rightSidebarAddItem() {
 function listsContent() {
     const div = document.createElement('div');
         div.classList.add("lists-container");
-        div.setAttribute('id', "lists-container")
-    //const p = document.createElement("p");
-    //p.textContent = "List"
-        //p.addEventListener('click', () => (
-            //filterTaskstoList(p.textContent)
-        //));
-    //div.appendChild(p);
+        div.setAttribute('id', "lists-container");
     return div;
 }
 

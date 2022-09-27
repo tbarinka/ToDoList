@@ -1,10 +1,9 @@
 import './style.css';
 import { userLists, pushToUserLists } from './createListApp.js';
-import { filterTaskstoList, sortTasksToHome } from './createTaskApp.js';
+import { filterTaskstoList, sortTasksToHome, filterTodayTasks } from './createTaskApp.js';
 
-//these functions govern how tasks are sorted/filtered into the main container
-
-//List Loader
+//Functions that govern how tasks are sorted/filtered into the main container
+    //List Loader Suite
 
 function mainDOMLoadList(listTitle) {
     const container = document.createElement('div');
@@ -36,7 +35,7 @@ function loadList(listTitle) {
     return container;
 }
 
-//Home Loader
+    //Home Loader Suite
 
 function mainDOMLoadHome() {
     const container = document.createElement('div');
@@ -56,6 +55,7 @@ function mainIntegratorHomeLoader() {
     return integratedItem;
 }
 
+
 function loadHomeTasks() {
     const container = document.createElement('div');
         container.classList.add('listContentContainer');
@@ -66,6 +66,37 @@ function loadHomeTasks() {
     });
     return container;
 }
+
+    //Today Loader Suite
+
+function mainDOMLoadToday() {
+    const container = document.createElement('div');
+    container.classList.add('mainContainer');
+
+    content.lastChild.remove();
+    container.appendChild(mainIntegratorTodayLoader());
+    content.appendChild(container);
+}
+
+function mainIntegratorTodayLoader() {
+    const integratedItem = document.createElement('div');
+        integratedItem.classList.add('integratedItem');
+
+    integratedItem.appendChild(titleLoader("Today"));
+    integratedItem.appendChild(loadTodayTasks());
+    return integratedItem;
+};
+
+function loadTodayTasks() {
+        const container = document.createElement('div');
+            container.classList.add('listContentContainer');
+        const array = filterTodayTasks();
+        array.forEach((element) => {
+            container.appendChild(listItemIntegrator(element.title));
+        });
+        return container;
+};
+    
 
 // This function is repeated in each of the loader suites above
 
@@ -112,7 +143,7 @@ function listIcons() {
     //Item Control Icon Container
         //Item Control Icons
 
-export { mainDOMLoadList, mainDOMLoadHome }
+export { mainDOMLoadList, mainDOMLoadHome, mainDOMLoadToday }
 
 
 
