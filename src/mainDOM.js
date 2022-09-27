@@ -1,6 +1,9 @@
 import './style.css';
 import { userLists, pushToUserLists } from './createListApp.js';
-import { filterTaskstoList, sortTasksToHome, filterTodayTasks } from './createTaskApp.js';
+import { filterTaskstoList, sortTasksToHome, filterTodayTasks, filterThisWeekTasks } from './createTaskApp.js';
+import mdiTrashCanOutline from './images/mdiTrashCanOutline.png';
+import mdiPencilOutline from './images/mdiPencilOutline.png';
+import mdiInformationOutline from './images/mdiInformationOutline.png';
 
 //Functions that govern how tasks are sorted/filtered into the main container
     //List Loader Suite
@@ -96,7 +99,36 @@ function loadTodayTasks() {
         });
         return container;
 };
+
+    //This Week Suite
+
+function mainDOMLoadThisWeek() {
+    const container = document.createElement('div');
+        container.classList.add('mainContainer');
     
+    content.lastChild.remove();
+    container.appendChild(mainIntegratorThisWeek());
+    content.appendChild(container);
+}
+
+function mainIntegratorThisWeek() {
+    const integratedItem = document.createElement('div');
+        integratedItem.classList.add('integratedItem');
+    
+    integratedItem.appendChild(titleLoader("This Week"));
+    integratedItem.appendChild(loadThisWeekTasks());
+    return integratedItem;
+    };
+
+function loadThisWeekTasks() {
+    const container = document.createElement('div');
+        container.classList.add('listContentContainer');
+    const array = filterThisWeekTasks();
+    array.forEach((element) => {
+        container.appendChild(listItemIntegrator(element.title));
+});
+return container;
+}
 
 // This function is repeated in each of the loader suites above
 
@@ -115,7 +147,7 @@ function listItemIntegrator(itemTitle) {
     const container = document.createElement('div');
         container.classList.add('listItemContainer');
     container.appendChild(listItem(itemTitle));
-    //when I upload the icons, append that to container
+    container.appendChild(listIcons());
     return container;
 }
 function listItem(itemTitle) {
@@ -133,17 +165,47 @@ function listItem(itemTitle) {
     return container;
 }
 function listIcons() {
-    //edit
-    //move project
-    //trash
+    const div = document.createElement('div');
+        div.classList.add('listItemIconContainer')
+    div.appendChild(trashCan());
+    div.appendChild(pencil());
+    div.appendChild(info());
+    return div;
+
 }
+    function trashCan() {
+        const div = document.createElement('button');
+        const trash = new Image();
+            trash.src = mdiTrashCanOutline;
+            trash.classList.add('listItemIconButton');
+        div.appendChild(trash);
+        return div;
+    }
+    function pencil() {
+        const div = document.createElement('button');
+        const pencil = new Image();
+            pencil.src = mdiPencilOutline;
+            pencil.classList.add('listItemIconButton');
+        div.appendChild(pencil);
+        return div;
+    }
+    function info() {
+        const div = document.createElement('button');
+        const info = new Image();
+            info.src = mdiInformationOutline;
+            info.classList.add('listItemIconButton');
+        div.appendChild(info);
+        return div
+    }
+
+
 //List Item
     //Item Container
     //Item Title
     //Item Control Icon Container
         //Item Control Icons
 
-export { mainDOMLoadList, mainDOMLoadHome, mainDOMLoadToday }
+export { mainDOMLoadList, mainDOMLoadHome, mainDOMLoadToday, mainDOMLoadThisWeek }
 
 
 

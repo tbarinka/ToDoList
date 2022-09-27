@@ -39,7 +39,6 @@ function loadDOMSidebarLists() {
         let p = document.createElement("p");
         p.textContent = userList.name;
         p.addEventListener('click', () => (
-            //filterTaskstoList(p.textContent)
             mainDOMLoadList(p.textContent)
         ));
         item.appendChild(p);

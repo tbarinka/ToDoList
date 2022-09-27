@@ -42,16 +42,14 @@ function filterTodayTasks() {
     return filteredTasks;
 }
 function filterThisWeekTasks() {
+    //const weekBegin = new Date(); const weekTerminus = addWeeks(new Date(), 1); console.log(weekTerminus);
     const filteredTasks = userTasks.filter(function(task) {
         //console.log(task.date);
         //console.log(new Date(task.date.replace("-", "/")));
-        //console.log(isSameWeek(new Date(), new Date(task.date.replace("-", "/"))));
-        //if isSameWeek(new Date(), new Date(task.date.replace("-", "/"))) return console.log("correct!");
-
-
-        const weekBegin = new Date();
-        const weekTerminus = addWeeks(new Date(), 1);
+        console.log(isSameWeek(new Date(), new Date(task.date.replace("-", "/"))));
+        if (isSameWeek(new Date(), new Date(task.date.replace("-", "/")))) return task;
     });
+    return filteredTasks;
 }
 
 export { Task, pushTaskToArray, userTasks, filterTaskstoList, sortTasksToHome, filterTodayTasks, filterThisWeekTasks }

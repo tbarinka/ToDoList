@@ -2,7 +2,7 @@ import './style.css';
 import plus from './images/plus.png';
 import { addListCardDOMLoad } from './createListDOM.js';
 import { createTaskDOMLoad } from './createTaskDOM.js';
-import { mainDOMLoadHome, mainDOMLoadToday } from './mainDOM.js';
+import { mainDOMLoadHome, mainDOMLoadToday, mainDOMLoadThisWeek } from './mainDOM.js';
 import { filterTodayTasks, filterThisWeekTasks } from './createTaskApp.js'
 
 function loadSidebarDOM() {
@@ -30,7 +30,7 @@ function loadSidebarDOM() {
     }
     function createThisWeek() {
         const today = sidebarItemIntegrater("This Week")
-        today.addEventListener('click', () => filterThisWeekTasks());
+        today.addEventListener('click', () => mainDOMLoadThisWeek());
         return today
     }
 
