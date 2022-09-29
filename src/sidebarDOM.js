@@ -2,7 +2,7 @@ import './style.css';
 import plus from './images/plus.png';
 import { addListCardDOMLoad } from './createListDOM.js';
 import { createTaskDOMLoad } from './createTaskDOM.js';
-import { mainDOMLoadHome, mainDOMLoadToday, mainDOMLoadThisWeek } from './mainDOM.js';
+import { mainDOMLoadAll, mainDOMLoadToday, mainDOMLoadThisWeek } from './mainDOM.js';
 import { filterTodayTasks, filterThisWeekTasks } from './createTaskApp.js'
 
 function loadSidebarDOM() {
@@ -11,17 +11,17 @@ function loadSidebarDOM() {
         sidebar.classList.add('sidebar');
     content.appendChild(sidebar);
     sidebar.appendChild(createTaskButton());
-    sidebar.appendChild(createHome());
+    sidebar.appendChild(createAll());
     sidebar.appendChild(createToday());
     sidebar.appendChild(createThisWeek());
     sidebar.appendChild(sidebarItemIntegrater("Lists", "y"));
 }
 
     //These functions add create individual sidebar items with event listeners
-    function createHome() {
-        const home = sidebarItemIntegrater("Home");
-        home.addEventListener('click', () => mainDOMLoadHome());
-        return home;
+    function createAll() {
+        const all = sidebarItemIntegrater("All");
+        all.addEventListener('click', () => mainDOMLoadAll());
+        return all;
     }
     function createToday() {
         const today = sidebarItemIntegrater("Today")

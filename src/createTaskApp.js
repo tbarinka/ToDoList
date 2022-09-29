@@ -23,7 +23,7 @@ function filterTaskstoList(listTitle) {
     });
     return filteredList;
 }
-function sortTasksToHome() {
+function sortTasksToAll() {
     const sortedTasks = userTasks.sort(function(a, b) {
         var keyA = new Date(a.date),
             keyB = new Date(b.date);
@@ -52,4 +52,4 @@ function filterThisWeekTasks() {
     return filteredTasks;
 }
 
-export { Task, pushTaskToArray, userTasks, filterTaskstoList, sortTasksToHome, filterTodayTasks, filterThisWeekTasks }
+export { Task, pushTaskToArray, userTasks, filterTaskstoList, sortTasksToAll, filterTodayTasks, filterThisWeekTasks }

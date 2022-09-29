@@ -1,6 +1,6 @@
 import './style.css';
 import { userLists, pushToUserLists } from './createListApp.js';
-import { filterTaskstoList, sortTasksToHome, filterTodayTasks, filterThisWeekTasks } from './createTaskApp.js';
+import { filterTaskstoList, sortTasksToAll, filterTodayTasks, filterThisWeekTasks } from './createTaskApp.js';
 import mdiTrashCanOutline from './images/mdiTrashCanOutline.png';
 import mdiPencilOutline from './images/mdiPencilOutline.png';
 import mdiInformationOutline from './images/mdiInformationOutline.png';
@@ -38,31 +38,31 @@ function loadList(listTitle) {
     return container;
 }
 
-    //Home Loader Suite
+    //All Tasks Loader Suite
 
-function mainDOMLoadHome() {
+function mainDOMLoadAll() {
     const container = document.createElement('div');
         container.classList.add('mainContainer');
     
     content.lastChild.remove();
-    container.appendChild(mainIntegratorHomeLoader())
+    container.appendChild(mainIntegratorAllLoader())
     content.appendChild(container);
 }
 
-function mainIntegratorHomeLoader() {
+function mainIntegratorAllLoader() {
     const integratedItem = document.createElement('div');
         integratedItem.classList.add('integratedItem');
     
-    integratedItem.appendChild(titleLoader("Home"));
-    integratedItem.appendChild(loadHomeTasks());
+    integratedItem.appendChild(titleLoader("All Tasks"));
+    integratedItem.appendChild(loadAllTasks());
     return integratedItem;
 }
 
 
-function loadHomeTasks() {
+function loadAllTasks() {
     const container = document.createElement('div');
         container.classList.add('listContentContainer');
-    const array = sortTasksToHome();
+    const array = sortTasksToAll();
 
     array.forEach((element) => {
         container.appendChild(listItemIntegrator(element.title));
@@ -205,7 +205,7 @@ function listIcons() {
     //Item Control Icon Container
         //Item Control Icons
 
-export { mainDOMLoadList, mainDOMLoadHome, mainDOMLoadToday, mainDOMLoadThisWeek }
+export { mainDOMLoadList, mainDOMLoadAll, mainDOMLoadToday, mainDOMLoadThisWeek }
 
 
 
