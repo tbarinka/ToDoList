@@ -1,5 +1,15 @@
-body { padding: 0; margin: 0; font-family: Arial, sans-serif }
-
+html, body {
+    padding: 0;
+    margin: 0; 
+    font-family: Arial, sans-serif;
+    height: 100%;
+    overflow: hidden
+}
+.toDo {
+    height: 10px;
+    display: flex;
+    align-items: center;
+}
 #content {
     display: flex;
 }
