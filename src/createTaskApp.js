@@ -4,7 +4,7 @@ import { format, isSameWeek, addWeeks } from 'date-fns';
 let userTasks = [];
 
 class Task {
-    constructor(title, date, list) {
+    constructor(title, date, list, description, time) {
         this.title = title;
         this.date = date;
         this.list = list;

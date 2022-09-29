@@ -2,6 +2,7 @@ import './style.css';
 import { userLists, pushToUserLists } from './createListApp.js';
 import { filterTaskstoList } from './createTaskApp.js';
 import { mainDOMLoadList } from './mainDOM.js';
+import trash from './images/trash-can-outline.png'
 
 
 function addListCardDOMLoad(s1, s2) {
@@ -36,15 +37,32 @@ function addListCardDOMLoad(s1, s2) {
 function loadDOMSidebarLists() {
     const item = document.createElement("div");
     userLists.forEach((userList) => {
+        let div = document.createElement('div');
+            div.classList.add('sidebarListItemContainer')
         let p = document.createElement("p");
         p.textContent = userList.name;
         p.addEventListener('click', () => (
             mainDOMLoadList(p.textContent)
         ));
-        item.appendChild(p);
+        div.appendChild(p);
+        div.appendChild(listIcon());
+        item.appendChild(div);
     })
     return item;
 }
+    function listIcon() {
+        const button = document.createElement('button');
+            button.classList.add('sidebarListIconButton');
+            button.addEventListener('click', () => {
+                button.parentNode.remove();
+            })
+        const trashIcon = new Image();
+            trashIcon.src = trash;
+            trashIcon.classList.add('sidebarListIcon');
+        button.appendChild(trashIcon);
+        return button;
+    }
+
 function cardInput() {
     const div = document.createElement('div');
         div.classList.add('cardTextBorder');
