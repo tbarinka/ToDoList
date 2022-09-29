@@ -1,5 +1,5 @@
 import './style.css';
-//import checklist from './images/clipboard-check-multiple-outline.png'
+import checklist from './images/clipboard-check-multiple-outline.png'
 
 function loadHeader() {
     const header = document.createElement('div');
@@ -14,7 +14,7 @@ function leftHeaderContent() {
     const h = document.createElement('h1');
         h.classList.add("toDo")
         h.textContent = "ToDo"
-    //left.appendChild(headerIcon())
+    left.appendChild(headerIcon())
     left.appendChild(h);
     return left
 }
