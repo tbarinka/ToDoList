@@ -82,6 +82,13 @@ html, body {
     justify-content: space-between;
     alignt-items: center;
 }
+.sidebarListItemContainerSelected {
+    display: flex;
+    justify-content: space-between;
+    alignt-items: center;
+    background-color: #5eead4;
+    color: white;
+}
 .sidebarListIcon {
 
 }

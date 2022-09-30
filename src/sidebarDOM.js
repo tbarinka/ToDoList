@@ -36,9 +36,7 @@ function loadSidebarDOM() {
         thisWeek.setAttribute('id', 'thisWeek');
         return thisWeek
     }
-    function toggleSidebarItemSelected() {
 
-    }
 
     function createTaskButton() {
         const div = document.createElement('div');

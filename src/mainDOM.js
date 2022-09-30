@@ -4,6 +4,7 @@ import { filterTaskstoList, sortTasksToAll, filterTodayTasks, filterThisWeekTask
 import mdiTrashCanOutline from './images/mdiTrashCanOutline.png';
 import mdiPencilOutline from './images/mdiPencilOutline.png';
 import mdiInformationOutline from './images/mdiInformationOutline.png';
+import { loadDOMSidebarLists } from './createListDOM.js';
 
 //Functions that govern how tasks are sorted/filtered into the main container
     //List Loader Suite
@@ -17,7 +18,48 @@ function mainDOMLoadList(listTitle) {
     content.lastChild.remove();
     container.appendChild(mainIntegratorListLoader(listTitle))
     content.appendChild(container);
+    let lists = content.firstChild.nextSibling.lastChild.lastChild;
+        lists.firstChild.remove();
+    lists.appendChild(loadDOMSidebarLists());
+    checkSelectedListItems();
+    unselectTop3SidebarItems();
 }
+
+    function checkSelectedListItems() {
+        const nodeList = document.querySelectorAll('.sidebarListItemContainer');
+        const secondNodeList = document.querySelectorAll('sidebarListItemContainerSelected')
+        console.log(secondNodeList);
+        for (let i = 0; i < secondNodeList.length; i++) {
+            let item = nodeList[i];
+            let mainContainer = document.getElementById('mainContainer');
+            item.classList.remove('sidebarListItemContainerSelected');
+            item.classList.add('sidebarListItemContainer');
+        }
+
+        for (let i = 0; i < nodeList.length; i++) {
+            let item = nodeList[i];
+            let mainContainer = document.getElementById('mainContainer');
+            if (item.firstChild.textContent == mainContainer.firstChild.firstChild.textContent) {
+                item.classList.remove('sidebarListItemContainer');
+                item.classList.add('sidebarListItemContainerSelected');
+            } 
+            else {
+                item.classList.remove('sidebarListItemContainerSelected');
+                item.classList.add('sidebarListItemContainer');
+            }
+        } 
+
+    }
+    function unselectTop3SidebarItems() {
+        const all = content.firstChild.nextSibling.firstChild.nextSibling;
+        const today = content.firstChild.nextSibling.firstChild.nextSibling.nextSibling;
+        const thisWeek = content.firstChild.nextSibling.firstChild.nextSibling.nextSibling.nextSibling;
+        if (all.classList.contains('sidebarItemSelected')) {all.classList.remove('sidebarItemSelected') && all.classList.add('sidebarIntegratedItem')}
+        if (today.classList.contains('sidebarItemSelected')) {today.classList.remove('sidebarItemSelected') && today.classList.add('sidebarIntegratedItem')}
+        if (thisWeek.classList.contains('sidebarItemSelected')) {thisWeek.classList.remove('sidebarItemSelected') && thisWeek.classList.add('sidebarIntegratedItem')}
+
+    }
+
 
 function mainIntegratorListLoader(title) {
     const integratedItem = document.createElement('div');
@@ -55,6 +97,12 @@ function mainDOMLoadAll() {
     all.classList.add('sidebarItemSelected')
     if (today.classList.contains('sidebarItemSelected')) {today.classList.remove('sidebarItemSelected') && today.classList.add('sidebarIntegratedItem')}
     if (thisWeek.classList.contains('sidebarItemSelected')) {thisWeek.classList.remove('sidebarItemSelected') && thisWeek.classList.add('sidebarIntegratedItem')}
+    
+    let lists = content.firstChild.nextSibling.lastChild.lastChild;
+    lists.firstChild.remove();
+    lists.appendChild(loadDOMSidebarLists());
+    checkSelectedListItems();
+
 }
 
 function mainIntegratorAllLoader() {
@@ -92,6 +140,12 @@ function mainDOMLoadToday() {
     today.classList.add('sidebarItemSelected')
     if (all.classList.contains('sidebarItemSelected')) {all.classList.remove('sidebarItemSelected') && all.classList.add('sidebarIntegratedItem')}
     if (thisWeek.classList.contains('sidebarItemSelected')) {thisWeek.classList.remove('sidebarItemSelected') && thisWeek.classList.add('sidebarIntegratedItem')}
+    
+    
+    let lists = content.firstChild.nextSibling.lastChild.lastChild;
+    lists.firstChild.remove();
+    lists.appendChild(loadDOMSidebarLists());
+    checkSelectedListItems();
 }
 
 function mainIntegratorTodayLoader() {
@@ -126,6 +180,11 @@ function mainDOMLoadThisWeek() {
     thisWeek.classList.add('sidebarItemSelected')
     if (all.classList.contains('sidebarItemSelected')) {all.classList.remove('sidebarItemSelected') && all.classList.add('sidebarIntegratedItem')}
     if (today.classList.contains('sidebarItemSelected')) {today.classList.remove('sidebarItemSelected') && today.classList.add('sidebarIntegratedItem')}
+    
+    let lists = content.firstChild.nextSibling.lastChild.lastChild;
+    lists.firstChild.remove();
+    lists.appendChild(loadDOMSidebarLists());
+    checkSelectedListItems();
 }
 
 function mainIntegratorThisWeek() {
@@ -222,7 +281,7 @@ function listIcons() {
     //Item Control Icon Container
         //Item Control Icons
 
-export { mainDOMLoadList, mainDOMLoadAll, mainDOMLoadToday, mainDOMLoadThisWeek }
+export { mainDOMLoadList, mainDOMLoadAll, mainDOMLoadToday, mainDOMLoadThisWeek, checkSelectedListItems }
 
 
 

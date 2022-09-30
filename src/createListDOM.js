@@ -1,8 +1,8 @@
 import './style.css';
 import { userLists, pushToUserLists } from './createListApp.js';
 import { filterTaskstoList } from './createTaskApp.js';
-import { mainDOMLoadList } from './mainDOM.js';
-import trash from './images/trash-can-outline.png'
+import { mainDOMLoadList, checkSelectedListItems } from './mainDOM.js';
+import trash from './images/trash-can-outline.png';
 
 
 function addListCardDOMLoad(s1, s2) {
@@ -20,6 +20,8 @@ function addListCardDOMLoad(s1, s2) {
         lists.textContent = "";
         lists.appendChild(loadDOMSidebarLists());
         card.remove();
+        checkSelectedListItems();
+        
     });
     //cancel button event listener --> removes card from DOM
     card.lastChild.firstChild.addEventListener('click', (event) => {
@@ -48,6 +50,7 @@ function loadDOMSidebarLists() {
         div.appendChild(listIcon());
         item.appendChild(div);
     })
+
     return item;
 }
     function listIcon() {
@@ -89,4 +92,4 @@ function cardButton(s) {
     return button;
 }
 
-export { addListCardDOMLoad }
+export { addListCardDOMLoad, loadDOMSidebarLists }
