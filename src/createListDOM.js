@@ -53,18 +53,30 @@ function loadDOMSidebarLists() {
 
     return item;
 }
-    function listIcon() {
-        const button = document.createElement('button');
-            button.classList.add('sidebarListIconButton');
-            button.addEventListener('click', () => {
-                button.parentNode.remove();
-            })
-        const trashIcon = new Image();
-            trashIcon.src = trash;
-            trashIcon.classList.add('sidebarListIcon');
-        button.appendChild(trashIcon);
-        return button;
+function listIcon() {
+    const button = document.createElement('button');
+        button.classList.add('sidebarListIconButton');
+        button.addEventListener('click', () => {
+            button.parentNode.remove();
+            deleteList();
+        })
+    const trashIcon = new Image();
+        trashIcon.src = trash;
+        trashIcon.classList.add('sidebarListIcon');
+    button.appendChild(trashIcon);
+    return button;
+
+    function deleteList() {
+        const listName = button.parentNode.firstChild.textContent;
+
+        userLists.forEach(list => {
+            if (list.name == listName) {
+                userLists.splice(userLists.indexOf(list), 1);
+                console.log(userLists);
+            }
+        });
     }
+};
 
 function cardInput() {
     const div = document.createElement('div');
