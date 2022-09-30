@@ -21,17 +21,23 @@ function loadSidebarDOM() {
     function createAll() {
         const all = sidebarItemIntegrater("All");
         all.addEventListener('click', () => mainDOMLoadAll());
+        all.setAttribute('id', 'all');
         return all;
     }
     function createToday() {
         const today = sidebarItemIntegrater("Today")
         today.addEventListener('click', () => mainDOMLoadToday());
+        today.setAttribute('id', 'today');
         return today
     }
     function createThisWeek() {
-        const today = sidebarItemIntegrater("This Week")
-        today.addEventListener('click', () => mainDOMLoadThisWeek());
-        return today
+        const thisWeek = sidebarItemIntegrater("This Week")
+        thisWeek.addEventListener('click', () => mainDOMLoadThisWeek());
+        thisWeek.setAttribute('id', 'thisWeek');
+        return thisWeek
+    }
+    function toggleSidebarItemSelected() {
+
     }
 
     function createTaskButton() {
@@ -61,9 +67,11 @@ function sidebarItemIntegrater(title, toggleRightComponent) {
         const item = document.createElement('div');
             item.classList.add('SideBarItemRightComponent');
         div.appendChild(item);
-    }
+    } 
     return div;
 }
+
+
 function leftSidebarComponent(title) {
     const item = document.createElement('div');
         item.classList.add('SideBarItemLeftComponent');

@@ -8,9 +8,11 @@ import mdiInformationOutline from './images/mdiInformationOutline.png';
 //Functions that govern how tasks are sorted/filtered into the main container
     //List Loader Suite
 
+
 function mainDOMLoadList(listTitle) {
     const container = document.createElement('div');
         container.classList.add('mainContainer');
+        container.setAttribute('id', 'mainContainer');
     
     content.lastChild.remove();
     container.appendChild(mainIntegratorListLoader(listTitle))
@@ -43,10 +45,16 @@ function loadList(listTitle) {
 function mainDOMLoadAll() {
     const container = document.createElement('div');
         container.classList.add('mainContainer');
-    
     content.lastChild.remove();
     container.appendChild(mainIntegratorAllLoader())
     content.appendChild(container);
+
+    const all = content.firstChild.nextSibling.firstChild.nextSibling;
+    const today = content.firstChild.nextSibling.firstChild.nextSibling.nextSibling;
+    const thisWeek = content.firstChild.nextSibling.firstChild.nextSibling.nextSibling.nextSibling;
+    all.classList.add('sidebarItemSelected')
+    if (today.classList.contains('sidebarItemSelected')) {today.classList.remove('sidebarItemSelected') && today.classList.add('sidebarIntegratedItem')}
+    if (thisWeek.classList.contains('sidebarItemSelected')) {thisWeek.classList.remove('sidebarItemSelected') && thisWeek.classList.add('sidebarIntegratedItem')}
 }
 
 function mainIntegratorAllLoader() {
@@ -79,6 +87,11 @@ function mainDOMLoadToday() {
     content.lastChild.remove();
     container.appendChild(mainIntegratorTodayLoader());
     content.appendChild(container);
+
+
+    today.classList.add('sidebarItemSelected')
+    if (all.classList.contains('sidebarItemSelected')) {all.classList.remove('sidebarItemSelected') && all.classList.add('sidebarIntegratedItem')}
+    if (thisWeek.classList.contains('sidebarItemSelected')) {thisWeek.classList.remove('sidebarItemSelected') && thisWeek.classList.add('sidebarIntegratedItem')}
 }
 
 function mainIntegratorTodayLoader() {
@@ -109,6 +122,10 @@ function mainDOMLoadThisWeek() {
     content.lastChild.remove();
     container.appendChild(mainIntegratorThisWeek());
     content.appendChild(container);
+
+    thisWeek.classList.add('sidebarItemSelected')
+    if (all.classList.contains('sidebarItemSelected')) {all.classList.remove('sidebarItemSelected') && all.classList.add('sidebarIntegratedItem')}
+    if (today.classList.contains('sidebarItemSelected')) {today.classList.remove('sidebarItemSelected') && today.classList.add('sidebarIntegratedItem')}
 }
 
 function mainIntegratorThisWeek() {
