@@ -14,7 +14,7 @@ function addListCardDOMLoad(s1, s2) {
 
     //event listener: pushes user text into userLists array when click 'create';
     card.lastChild.lastChild.addEventListener('click', (event) => {
-        let name = card.firstChild.firstChild.value;
+        let name = card.firstChild.lastChild.value;
         pushToUserLists(name);
         let lists = content.firstChild.nextSibling.lastChild.lastChild;
         lists.textContent = "";
@@ -79,14 +79,20 @@ function listIcon() {
 };
 
 function cardInput() {
+    const listName = document.createElement('label'); 
+        listName.setAttribute("for", "listName");
+        listName.textContent = "Name Your List: "
     const div = document.createElement('div');
         div.classList.add('cardTextBorder');
     const inputText = document.createElement('input');
         inputText.classList.add('cardInputText');
+        inputText.setAttribute("id", "listName");
+    div.appendChild(listName);
     div.appendChild(inputText);
 
     return div;
 }
+
 function buttonIntegrator(s1, s2) {
     const div = document.createElement('div');
         div.classList.add('cardButtonIntegrator');
