@@ -11,7 +11,7 @@ function loadHeader() {
 function leftHeaderContent() {
     const left = document.createElement('div');
         left.classList.add('leftHeaderContent');
-    const h = document.createElement('h1');
+    const h = document.createElement('p');
         h.classList.add("toDo")
         h.textContent = "ToDo"
     left.appendChild(headerIcon())
