@@ -13,6 +13,7 @@ html, body {
     color: white;
     font-size: 30px;
     height: 60px;
+    width: 100%;
 }
 
 .leftHeaderContent {
@@ -41,7 +42,7 @@ html, body {
 .sidebar {
     background-color: #f8fafc;
     height: 100vh;
-    width: 300px;
+    width: 21%;
     display: flex;
     flex-direction: column;
     padding-top: 40px;
@@ -97,14 +98,15 @@ html, body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-left: 35px;
-    margin-right: 20px;
-    height: 100%
+    padding-left: 35px;
+    padding-right: 20px;
 }
 .sidebarListItemContainerSelected {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-left: 35px;
+    padding-right: 20px;
     background-color: #5eead4;
     color: white;
 }
@@ -231,15 +233,47 @@ html, body {
 /* main list content */
 
 .mainContainer {
-    
+    width: 79%
 }
+.integratedItem {
+    padding-top: 20px;
+    padding-left: 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 90%;
 
+}
+.titleContainer {
+}
+.listContentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
 .listItemContainer {
     display: flex;
-    flex-direction: space-between;
-    alignt-items: center;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 0px 1px 0px 0px rgba(0,0,0,0.3);      
+    padding-bottom: 5px;
 }
 .listItemIconContainer {
     display: flex;
     align-items: center;
+    gap: 5px;
+}
+.listItemIconContainer > button {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.listItemIconContainer > button> img {
+    width: 25px;
 }
