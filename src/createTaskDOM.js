@@ -8,7 +8,7 @@ import { userLists, pushToUserLists, filterTaskstoList } from './createListApp.j
 function createTaskDOMLoad() {
 
     const card = document.createElement('div');
-        card.classList.add('newListCard');
+        card.classList.add('newTaskCard');
     card.appendChild(taskInfo());
     card.appendChild(buttonIntegrator('Cancel', 'Add Task'));
         //cancel button event listener --> removes card from DOM
@@ -17,6 +17,7 @@ function createTaskDOMLoad() {
             console.log(name);
             card.remove();
         });
+        card.lastChild.firstChild.setAttribute("id", "cancelTask")
         //event listener on create button
         card.lastChild.lastChild.addEventListener('click', (event) => {
             //console.log(card.firstChild.firstChild.lastChild.value);
@@ -27,6 +28,7 @@ function createTaskDOMLoad() {
             pushTaskToArray(title.value, date.value, list.value);
             card.remove();
         });
+        card.lastChild.lastChild.setAttribute("id", "addTask")
 
     if (document.body.nextSibling !== null) {
         document.body.nextSibling.remove();
@@ -36,9 +38,12 @@ function createTaskDOMLoad() {
 
 function taskInfo() {
     const div = document.createElement('div');
-        div.classList.add('cardTextBorder');
-    div.appendChild(taskTitle());
-    div.appendChild(taskDate());
+        div.classList.add('taskCardTextBorder');
+    const firstRow = document.createElement('div');
+        firstRow.classList.add('taskInfoFirstRow');
+        firstRow.appendChild(taskTitle());
+        firstRow.appendChild(taskDate());
+    div.appendChild(firstRow);
     div.appendChild(taskList());
     return div;
 };
@@ -51,7 +56,7 @@ function taskInfo() {
             title.setAttribute("id", "title");
         const titleLabel = document.createElement('label');
             titleLabel.setAttribute("for", "title");
-            titleLabel.textContent = "Task Title: ";
+            titleLabel.textContent = "Task: ";
         div.appendChild(titleLabel);
         div.appendChild(title);
         return div;
@@ -101,9 +106,10 @@ function buttonIntegrator(s1, s2) {
 
 function cardButton(s) {
     const button = document.createElement('button');
-        button.classList.add('newListCardButton');
+        button.classList.add('taskCardButton');
     const buttonText = document.createElement('div');
         buttonText.textContent = s;
+        buttonText.classList.add('taskButtonText')
     button.appendChild(buttonText);
     return button;
 }

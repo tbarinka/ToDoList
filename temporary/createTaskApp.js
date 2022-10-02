@@ -23,3 +23,17 @@ function filterTasksbyList(List) {
 }
 
 export { Task, pushTaskToArray, userTasks }
+
+
+
+
+
+//function cardInput() {
+    const div = document.createElement('div');
+        div.classList.add('cardTextBorder');
+    const inputText = document.createElement('input');
+        inputText.classList.add('cardInputText');
+    div.appendChild(inputText);
+
+    return div;
+//}

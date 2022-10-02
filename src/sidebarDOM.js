@@ -40,7 +40,7 @@ function loadSidebarDOM() {
 
     function createTaskButton() {
         const div = document.createElement('div');
-            div.classList.add('SidebarAddTaskButton')
+            div.classList.add('sidebarAddTaskButton')
         const button = document.createElement('button');
             button.classList.add('createTask');
             button.textContent = "+ Create a Task"
@@ -105,8 +105,7 @@ function rightSidebarAddItem() {
 
 function listsContent() {
     const div = document.createElement('div');
-        div.classList.add("lists-container");
-        div.setAttribute('id', "lists-container");
+        div.classList.add("listContainer");
     return div;
 }
 

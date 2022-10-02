@@ -41,7 +41,7 @@ function loadDOMSidebarLists() {
     userLists.forEach((userList) => {
         let div = document.createElement('div');
             div.classList.add('sidebarListItemContainer')
-        let p = document.createElement("p");
+        let p = document.createElement("h4");
         p.textContent = userList.name;
         p.addEventListener('click', () => (
             mainDOMLoadList(p.textContent)
@@ -81,6 +81,7 @@ function listIcon() {
 function cardInput() {
     const listName = document.createElement('label'); 
         listName.setAttribute("for", "listName");
+        listName.setAttribute("id", "listNameLabel")
         listName.textContent = "Name Your List: "
     const div = document.createElement('div');
         div.classList.add('cardTextBorder');
@@ -97,7 +98,9 @@ function buttonIntegrator(s1, s2) {
     const div = document.createElement('div');
         div.classList.add('cardButtonIntegrator');
     div.appendChild(cardButton(s1));
+        div.firstChild.setAttribute("id", "listCancel");
     div.appendChild(cardButton(s2));
+        div.lastChild.setAttribute("id", "listAdd")
 
     return div;
 }
