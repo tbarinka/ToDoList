@@ -224,6 +224,9 @@ function listItemIntegrator(itemTitle) {
         container.classList.add('listItemContainer');
     container.appendChild(listItem(itemTitle));
     container.appendChild(listIcons());
+        container.lastChild.firstChild.addEventListener('click', () => {
+            container.remove();
+        });
     return container;
 }
 function listItem(itemTitle) {
@@ -242,7 +245,7 @@ function listItem(itemTitle) {
 }
 function listIcons() {
     const div = document.createElement('div');
-        div.classList.add('listItemIconContainer')
+        div.classList.add('listItemIconContainer');
     div.appendChild(trashCan());
     div.appendChild(pencil());
     div.appendChild(info());
@@ -250,13 +253,14 @@ function listIcons() {
 
 }
     function trashCan() {
-        const div = document.createElement('button');
+        const button = document.createElement('button');
         const trash = new Image();
             trash.src = mdiTrashCanOutline;
             trash.classList.add('listItemIconButton');
-        div.appendChild(trash);
-        return div;
+        button.appendChild(trash);
+        return button;
     }
+
     function pencil() {
         const div = document.createElement('button');
         const pencil = new Image();
