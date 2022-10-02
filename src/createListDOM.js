@@ -41,7 +41,7 @@ function loadDOMSidebarLists() {
     userLists.forEach((userList) => {
         let div = document.createElement('div');
             div.classList.add('sidebarListItemContainer')
-        let p = document.createElement("h4");
+        let p = document.createElement("p");
         p.textContent = userList.name;
         p.addEventListener('click', () => (
             mainDOMLoadList(p.textContent)

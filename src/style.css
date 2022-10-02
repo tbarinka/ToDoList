@@ -52,7 +52,7 @@ html, body {
     display: flex;
     justify-content: center;
     width: 100%;
-    padding-bottom: 40px;
+    padding-bottom: 15px;
 }
     .createTask {
         height: 70px;
@@ -72,7 +72,6 @@ html, body {
     justify-content: space-between;
     align-items: center;
     padding-left: 10px;
-    padding-right: 10px;
     background-color: #5eead4;
     color: white;
 }
@@ -98,6 +97,8 @@ html, body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-left: 35px;
+    margin-right: 20px;
     height: 100%
 }
 .sidebarListItemContainerSelected {
