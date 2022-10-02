@@ -3,7 +3,8 @@
 
 import './style.css';
 import { Task, pushTaskToArray, userTasks } from './createTaskApp.js';
-import { userLists, pushToUserLists, filterTaskstoList } from './createListApp.js'
+import { userLists, pushToUserLists, filterTaskstoList } from './createListApp.js';
+import { refreshPage } from './mainDOM.js';
 
 function createTaskDOMLoad() {
 
@@ -24,6 +25,7 @@ function createTaskDOMLoad() {
             if (title.value == "") { return }
             pushTaskToArray(title.value, date.value, list.value);
             card.remove();
+            refreshPage();
         });
         card.lastChild.lastChild.setAttribute("id", "addTask")
 

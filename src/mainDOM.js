@@ -23,6 +23,7 @@ function mainDOMLoadList(listTitle) {
     lists.appendChild(loadDOMSidebarLists());
     checkSelectedListItems();
     unselectTop3SidebarItems();
+    refreshPage();
 }
 
     function checkSelectedListItems() {
@@ -278,6 +279,17 @@ function listIcons() {
         return div
     }
 
+function refreshPage() {
+    const content = document.getElementById("content");
+    console.log(content.firstChild.nextSibling.nextSibling.firstChild.firstChild.firstChild.textContent)
+    const mainTitle = content.firstChild.nextSibling.nextSibling.firstChild.firstChild.firstChild.textContent;
+
+    if (mainTitle == "All Tasks") { mainDOMLoadAll() }
+    if (mainTitle == "Today") { mainDOMLoadToday() }
+    if (mainTitle == "This Week") { mainDOMLoadThisWeek() }
+    else { mainDOMLoadList(mainTitle) }
+
+}
 
 //List Item
     //Item Container
@@ -285,7 +297,7 @@ function listIcons() {
     //Item Control Icon Container
         //Item Control Icons
 
-export { mainDOMLoadList, mainDOMLoadAll, mainDOMLoadToday, mainDOMLoadThisWeek, checkSelectedListItems }
+export { mainDOMLoadList, mainDOMLoadAll, mainDOMLoadToday, mainDOMLoadThisWeek, checkSelectedListItems, refreshPage }
 
 
 

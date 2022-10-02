@@ -1,7 +1,7 @@
 import './style.css';
 import { userLists, pushToUserLists } from './createListApp.js';
 import { filterTaskstoList } from './createTaskApp.js';
-import { mainDOMLoadList, checkSelectedListItems } from './mainDOM.js';
+import { mainDOMLoadList, checkSelectedListItems, refreshPage } from './mainDOM.js';
 import trash from './images/trash-can-outline.png';
 
 
@@ -11,7 +11,6 @@ function addListCardDOMLoad(s1, s2) {
         card.classList.add('newListCard');
     card.appendChild(cardInput());
     card.appendChild(buttonIntegrator(s1, s2));
-
     //event listener: pushes user text into userLists array when click 'create';
     card.lastChild.lastChild.addEventListener('click', (event) => {
         let name = card.firstChild.lastChild.value;
