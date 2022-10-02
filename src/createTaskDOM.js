@@ -13,18 +13,15 @@ function createTaskDOMLoad() {
     card.appendChild(buttonIntegrator('Cancel', 'Add Task'));
         //cancel button event listener --> removes card from DOM
         card.lastChild.firstChild.addEventListener('click', (event) => {
-            let name = card.lastChild.firstChild;
-            console.log(name);
             card.remove();
         });
         card.lastChild.firstChild.setAttribute("id", "cancelTask")
         //event listener on create button
         card.lastChild.lastChild.addEventListener('click', (event) => {
-            //console.log(card.firstChild.firstChild.lastChild.value);
-            //console.log(card.firstChild.lastChild.lastChild.value);
             const date = document.getElementById('date');
             const list = document.getElementById('list');
             const title = document.getElementById('title');
+            if (title.value == "") { return }
             pushTaskToArray(title.value, date.value, list.value);
             card.remove();
         });

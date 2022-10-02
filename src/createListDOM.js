@@ -15,6 +15,7 @@ function addListCardDOMLoad(s1, s2) {
     //event listener: pushes user text into userLists array when click 'create';
     card.lastChild.lastChild.addEventListener('click', (event) => {
         let name = card.firstChild.lastChild.value;
+        if (name == "") { return }
         pushToUserLists(name);
         let lists = content.firstChild.nextSibling.lastChild.lastChild;
         lists.textContent = "";

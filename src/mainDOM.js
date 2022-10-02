@@ -232,14 +232,14 @@ function listItemIntegrator(itemTitle) {
 function listItem(itemTitle) {
     const container = document.createElement('div');
         container.classList.add('leftListItem');
-    const checkBox = document.createElement("input");
-        checkBox.setAttribute("type", "checkbox");
-        checkBox.classList.add('listCheckbox');
+    //const checkBox = document.createElement("input");
+        //checkBox.setAttribute("type", "checkbox");
+        //checkBox.classList.add('listCheckbox');
     const label = document.createElement("label");
         label.setAttribute("for", "checkbox");
         label.textContent = itemTitle;
     
-    container.appendChild(checkBox);
+    //container.appendChild(checkBox);
     container.appendChild(label);
     return container;
 }
@@ -247,8 +247,8 @@ function listIcons() {
     const div = document.createElement('div');
         div.classList.add('listItemIconContainer');
     div.appendChild(trashCan());
-    div.appendChild(pencil());
-    div.appendChild(info());
+    //div.appendChild(pencil());
+    //div.appendChild(info());
     return div;
 
 }
