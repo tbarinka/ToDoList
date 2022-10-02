@@ -1,7 +1,7 @@
 import './style.css';
 import { userLists, pushToUserLists } from './createListApp.js';
 import { filterTaskstoList } from './createTaskApp.js';
-import { mainDOMLoadList, checkSelectedListItems, refreshPage } from './mainDOM.js';
+import { mainDOMLoadList, checkSelectedListItems } from './mainDOM.js';
 import trash from './images/trash-can-outline.png';
 
 

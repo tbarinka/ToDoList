@@ -5,6 +5,7 @@ import mdiTrashCanOutline from './images/mdiTrashCanOutline.png';
 import mdiPencilOutline from './images/mdiPencilOutline.png';
 import mdiInformationOutline from './images/mdiInformationOutline.png';
 import { loadDOMSidebarLists } from './createListDOM.js';
+import { userTasks } from './createTaskApp.js';
 
 //Functions that govern how tasks are sorted/filtered into the main container
     //List Loader Suite
@@ -226,7 +227,14 @@ function listItemIntegrator(itemTitle) {
     container.appendChild(listItem(itemTitle));
     container.appendChild(listIcons());
         container.lastChild.firstChild.addEventListener('click', () => {
-            container.remove();
+            const taskTitle = container.firstChild.firstChild.textContent;
+            userTasks.forEach(task =>  {
+                if (taskTitle == task.title) {
+                    userTasks.splice(userTasks.indexOf(task), 1);
+                    console.log(userTasks);
+                }
+                container.remove();
+            })
         });
     return container;
 }
@@ -279,6 +287,7 @@ function listIcons() {
         return div
     }
 
+//this function refreshes the main page whenever you add a new task, to make the new task appear
 function refreshPage() {
     const content = document.getElementById("content");
     console.log(content.firstChild.nextSibling.nextSibling.firstChild.firstChild.firstChild.textContent)
