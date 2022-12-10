@@ -25,6 +25,7 @@ function createTaskDOMLoad() {
             if (title.value == "") { return }
             pushTaskToArray(title.value, date.value, list.value);
             card.remove();
+            console.log('test');
             refreshPage();
         });
         card.lastChild.lastChild.setAttribute("id", "addTask")
