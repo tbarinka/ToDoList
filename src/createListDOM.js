@@ -17,6 +17,7 @@ function addListCardDOMLoad(s1, s2) {
         if (name == "") { return }
         pushToUserLists(name);
         let lists = content.firstChild.nextSibling.lastChild.lastChild;
+        console.log(lists);
         lists.textContent = "";
         lists.appendChild(loadDOMSidebarLists());
         card.remove();
@@ -43,9 +44,9 @@ function loadDOMSidebarLists() {
             div.classList.add('sidebarListItemContainer')
         let p = document.createElement("p");
         p.textContent = userList.name;
-        p.addEventListener('click', () => (
+        p.addEventListener('click', () => {
             mainDOMLoadList(p.textContent)
-        ));
+        });
         div.appendChild(p);
         div.appendChild(listIcon());
         item.appendChild(div);

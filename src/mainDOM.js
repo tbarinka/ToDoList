@@ -12,6 +12,7 @@ import { userTasks } from './createTaskApp.js';
 
 
 function mainDOMLoadList(listTitle) {
+        console.log('bug test');
     const container = document.createElement('div');
         container.classList.add('mainContainer');
         container.setAttribute('id', 'mainContainer');
@@ -24,13 +25,14 @@ function mainDOMLoadList(listTitle) {
     lists.appendChild(loadDOMSidebarLists());
     checkSelectedListItems();
     unselectTop3SidebarItems();
-    refreshPage();
+    //refreshPage();
 }
 
     function checkSelectedListItems() {
         const nodeList = document.querySelectorAll('.sidebarListItemContainer');
         const secondNodeList = document.querySelectorAll('sidebarListItemContainerSelected')
-        console.log(secondNodeList);
+        console.log(nodeList);
+        
         for (let i = 0; i < secondNodeList.length; i++) {
             let item = nodeList[i];
             let mainContainer = document.getElementById('mainContainer');
@@ -41,6 +43,10 @@ function mainDOMLoadList(listTitle) {
         for (let i = 0; i < nodeList.length; i++) {
             let item = nodeList[i];
             let mainContainer = document.getElementById('mainContainer');
+            console.log("checkSelectedListItems test");
+            console.log(item);
+            console.log(item.firstChild);
+            console.log(mainContainer.firstChild.firstChild.textContent);
             if (item.firstChild.textContent == mainContainer.firstChild.firstChild.textContent) {
                 item.classList.remove('sidebarListItemContainer');
                 item.classList.add('sidebarListItemContainerSelected');
@@ -101,6 +107,7 @@ function mainDOMLoadAll() {
     if (thisWeek.classList.contains('sidebarItemSelected')) {thisWeek.classList.remove('sidebarItemSelected') && thisWeek.classList.add('sidebarIntegratedItem')}
     
     let lists = content.firstChild.nextSibling.lastChild.lastChild;
+    console.log(lists);
     lists.firstChild.remove();
     lists.appendChild(loadDOMSidebarLists());
     checkSelectedListItems();
@@ -290,13 +297,15 @@ function listIcons() {
 //this function refreshes the main page whenever you add a new task, to make the new task appear
 function refreshPage() {
     const content = document.getElementById("content");
-    console.log(content.firstChild.nextSibling.nextSibling.firstChild.firstChild.firstChild.textContent)
     const mainTitle = content.firstChild.nextSibling.nextSibling.firstChild.firstChild.firstChild.textContent;
 
     if (mainTitle == "All Tasks") { mainDOMLoadAll() }
     if (mainTitle == "Today") { mainDOMLoadToday() }
     if (mainTitle == "This Week") { mainDOMLoadThisWeek() }
-    else { mainDOMLoadList(mainTitle) }
+    else {
+        console.log('bug test');
+        mainDOMLoadList(mainTitle)
+    }
 
 }
 
