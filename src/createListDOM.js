@@ -21,6 +21,7 @@ function addListCardDOMLoad(s1, s2) {
         lists.textContent = "";
         lists.appendChild(loadDOMSidebarLists());
         card.remove();
+        console.log('bug test');
         checkSelectedListItems();
         
     });

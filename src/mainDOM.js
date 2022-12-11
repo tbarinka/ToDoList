@@ -20,11 +20,12 @@ function mainDOMLoadList(listTitle) {
     container.appendChild(mainIntegratorListLoader(listTitle))
     content.appendChild(container);
     let lists = content.firstChild.nextSibling.lastChild.lastChild;
+    console.log(lists);
         lists.firstChild.remove();
     lists.appendChild(loadDOMSidebarLists());
+    console.log('bug test');
     checkSelectedListItems();
     unselectTop3SidebarItems();
-    //refreshPage();
 }
 
     function checkSelectedListItems() {
@@ -88,6 +89,7 @@ function loadList(listTitle) {
     //All Tasks Loader Suite
 
 function mainDOMLoadAll() {
+    console.log('loadall test');
     const container = document.createElement('div');
         container.classList.add('mainContainer');
     content.lastChild.remove();
@@ -295,11 +297,13 @@ function listIcons() {
 function refreshPage() {
     const content = document.getElementById("content");
     const mainTitle = content.firstChild.nextSibling.nextSibling.firstChild.firstChild.firstChild.textContent;
-
-    if (mainTitle == "All Tasks") { mainDOMLoadAll() }
-    if (mainTitle == "Today") { mainDOMLoadToday() }
-    if (mainTitle == "This Week") { mainDOMLoadThisWeek() }
+    console.log('main title test');
+    console.log(mainTitle);
+    if (mainTitle == "All Tasks") { console.log('all tasks'); mainDOMLoadAll() }
+    else if (mainTitle == "Today") { mainDOMLoadToday() }
+    else if (mainTitle == "This Week") { mainDOMLoadThisWeek() }
     else {
+        console.log('else');
         mainDOMLoadList(mainTitle)
     }
 }
