@@ -20,18 +20,15 @@ function mainDOMLoadList(listTitle) {
     container.appendChild(mainIntegratorListLoader(listTitle))
     content.appendChild(container);
     let lists = content.firstChild.nextSibling.lastChild.lastChild;
-    console.log(lists);
-        lists.firstChild.remove();
+    lists.firstChild.remove();
     lists.appendChild(loadDOMSidebarLists());
-    console.log('bug test');
     checkSelectedListItems();
     unselectTop3SidebarItems();
 }
 
     function checkSelectedListItems() {
         const nodeList = document.querySelectorAll('.sidebarListItemContainer');
-        const secondNodeList = document.querySelectorAll('sidebarListItemContainerSelected')
-        console.log(nodeList);
+        const secondNodeList = document.querySelectorAll('sidebarListItemContainerSelected');
         
         for (let i = 0; i < secondNodeList.length; i++) {
             let item = nodeList[i];
@@ -80,7 +77,6 @@ function loadList(listTitle) {
 
     const array = filterTaskstoList(listTitle);
     array.forEach((element) => {
-        console.log(element.title);
         container.appendChild(listItemIntegrator(element.title));
     });
     return container;
@@ -89,7 +85,6 @@ function loadList(listTitle) {
     //All Tasks Loader Suite
 
 function mainDOMLoadAll() {
-    console.log('loadall test');
     const container = document.createElement('div');
         container.classList.add('mainContainer');
     content.lastChild.remove();
@@ -104,7 +99,6 @@ function mainDOMLoadAll() {
     if (thisWeek.classList.contains('sidebarItemSelected')) {thisWeek.classList.remove('sidebarItemSelected') && thisWeek.classList.add('sidebarIntegratedItem')}
     
     let lists = content.firstChild.nextSibling.lastChild.lastChild;
-    console.log(lists);
     if (lists.hasChildNodes() == true) {
         lists.firstChild.remove();
     }
@@ -237,7 +231,6 @@ function listItemIntegrator(itemTitle) {
             userTasks.forEach(task =>  {
                 if (taskTitle == task.title) {
                     userTasks.splice(userTasks.indexOf(task), 1);
-                    console.log(userTasks);
                 }
                 container.remove();
             })
@@ -297,13 +290,11 @@ function listIcons() {
 function refreshPage() {
     const content = document.getElementById("content");
     const mainTitle = content.firstChild.nextSibling.nextSibling.firstChild.firstChild.firstChild.textContent;
-    console.log('main title test');
-    console.log(mainTitle);
-    if (mainTitle == "All Tasks") { console.log('all tasks'); mainDOMLoadAll() }
+
+    if (mainTitle == "All Tasks") { mainDOMLoadAll() }
     else if (mainTitle == "Today") { mainDOMLoadToday() }
     else if (mainTitle == "This Week") { mainDOMLoadThisWeek() }
     else {
-        console.log('else');
         mainDOMLoadList(mainTitle)
     }
 }
