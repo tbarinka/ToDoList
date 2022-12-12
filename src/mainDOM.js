@@ -9,7 +9,7 @@ import { userTasks } from './createTaskApp.js';
 
 //Functions that govern how tasks are sorted/filtered into the main container
     //List Loader Suite
-
+const content = document.getElementById("content");
 
 function mainDOMLoadList(listTitle) {
     const container = document.createElement('div');
@@ -77,7 +77,8 @@ function loadList(listTitle) {
 
     const array = filterTaskstoList(listTitle);
     array.forEach((element) => {
-        container.appendChild(listItemIntegrator(element.title));
+        console.log(element.date);
+        container.appendChild(listItemIntegrator(element.title, element.date));
     });
     return container;
 }
@@ -123,7 +124,7 @@ function loadAllTasks() {
     const array = sortTasksToAll();
 
     array.forEach((element) => {
-        container.appendChild(listItemIntegrator(element.title));
+        container.appendChild(listItemIntegrator(element.title, element.date));
     });
     return container;
 }
@@ -164,7 +165,7 @@ function loadTodayTasks() {
             container.classList.add('listContentContainer');
         const array = filterTodayTasks();
         array.forEach((element) => {
-            container.appendChild(listItemIntegrator(element.title));
+            container.appendChild(listItemIntegrator(element.title, element.date));
         });
         return container;
 };
@@ -203,7 +204,7 @@ function loadThisWeekTasks() {
         container.classList.add('listContentContainer');
     const array = filterThisWeekTasks();
     array.forEach((element) => {
-        container.appendChild(listItemIntegrator(element.title));
+        container.appendChild(listItemIntegrator(element.title, element.date));
 });
 return container;
 }
@@ -221,16 +222,17 @@ function titleLoader(title) {
 }
 
 //this function integrates icon & title under a single list unit
-function listItemIntegrator(itemTitle) {
+function listItemIntegrator(itemTitle, itemDate) {
     const container = document.createElement('div');
         container.classList.add('listItemContainer');
     container.appendChild(listItem(itemTitle));
-    container.appendChild(listIcons());
+    container.appendChild(listIcons(itemDate));
         container.lastChild.firstChild.addEventListener('click', () => {
             const taskTitle = container.firstChild.firstChild.textContent;
             userTasks.forEach(task =>  {
                 if (taskTitle == task.title) {
                     userTasks.splice(userTasks.indexOf(task), 1);
+                    console.log(userTasks);
                 }
                 container.remove();
             })
@@ -240,25 +242,24 @@ function listItemIntegrator(itemTitle) {
 function listItem(itemTitle) {
     const container = document.createElement('div');
         container.classList.add('leftListItem');
-    //const checkBox = document.createElement("input");
-        //checkBox.setAttribute("type", "checkbox");
-        //checkBox.classList.add('listCheckbox');
     const label = document.createElement("label");
         label.setAttribute("for", "checkbox");
         label.textContent = itemTitle;
-    
-    //container.appendChild(checkBox);
     container.appendChild(label);
     return container;
 }
-function listIcons() {
+function listIcons(itemDate) {
     const div = document.createElement('div');
-        div.classList.add('listItemIconContainer');
+    div.classList.add('listItemIconContainer');
+    div.appendChild(itemDateProducer(itemDate));
     div.appendChild(trashCan());
-    //div.appendChild(pencil());
-    //div.appendChild(info());
     return div;
-
+}
+function itemDateProducer(itemDate) {
+    let div = document.createElement('div');
+    div.classList.add('listItemDate');
+    div.textContent = itemDate;
+    return div;
 }
     function trashCan() {
         const button = document.createElement('button');
@@ -288,7 +289,7 @@ function listIcons() {
 
 //this function refreshes the main page whenever you add a new task, to make the new task appear
 function refreshPage() {
-    const content = document.getElementById("content");
+    //const content = document.getElementById("content");
     const mainTitle = content.firstChild.nextSibling.nextSibling.firstChild.firstChild.firstChild.textContent;
 
     if (mainTitle == "All Tasks") { mainDOMLoadAll() }

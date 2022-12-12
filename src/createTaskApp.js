@@ -13,7 +13,6 @@ class Task {
 }
 function pushTaskToArray(title, date, list) {
     const t = new Task(title, date, list);
-    console.log(t);
     userTasks.push(t);
 }
 function filterTaskstoList(listTitle) {
@@ -31,7 +30,6 @@ function sortTasksToAll() {
         if (keyA > keyB) return 1;
         return 0
     })
-    //console.log(sortedTasks);
     return sortedTasks;
 }
 function filterTodayTasks() {
@@ -42,11 +40,7 @@ function filterTodayTasks() {
     return filteredTasks;
 }
 function filterThisWeekTasks() {
-    //const weekBegin = new Date(); const weekTerminus = addWeeks(new Date(), 1); console.log(weekTerminus);
     const filteredTasks = userTasks.filter(function(task) {
-        //console.log(task.date);
-        //console.log(new Date(task.date.replace("-", "/")));
-        console.log(isSameWeek(new Date(), new Date(task.date.replace("-", "/"))));
         if (isSameWeek(new Date(), new Date(task.date.replace("-", "/")))) return task;
     });
     return filteredTasks;

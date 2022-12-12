@@ -5,8 +5,8 @@ import { createTaskDOMLoad } from './createTaskDOM.js';
 import { mainDOMLoadAll, mainDOMLoadToday, mainDOMLoadThisWeek } from './mainDOM.js';
 import { filterTodayTasks, filterThisWeekTasks } from './createTaskApp.js'
 
+const content = document.getElementById('content');
 function loadSidebarDOM() {
-    const content = document.getElementById('content')
     const sidebar = document.createElement('div');
         sidebar.classList.add('sidebar');
     content.appendChild(sidebar);

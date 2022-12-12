@@ -17,18 +17,15 @@ function addListCardDOMLoad(s1, s2) {
         if (name == "") { return }
         pushToUserLists(name);
         let lists = content.firstChild.nextSibling.lastChild.lastChild;
-        console.log(lists);
         lists.textContent = "";
         lists.appendChild(loadDOMSidebarLists());
         card.remove();
-        console.log('bug test');
         checkSelectedListItems();
         
     });
     //cancel button event listener --> removes card from DOM
     card.lastChild.firstChild.addEventListener('click', (event) => {
         let name = card.lastChild.firstChild;
-        console.log(name);
         card.remove();
     });
     
@@ -74,7 +71,6 @@ function listIcon() {
         userLists.forEach(list => {
             if (list.name == listName) {
                 userLists.splice(userLists.indexOf(list), 1);
-                console.log(userLists);
             }
         });
     }

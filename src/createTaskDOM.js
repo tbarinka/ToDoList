@@ -7,7 +7,6 @@ import { userLists, pushToUserLists, filterTaskstoList } from './createListApp.j
 import { refreshPage } from './mainDOM.js';
 
 function createTaskDOMLoad() {
-
     const card = document.createElement('div');
         card.classList.add('newTaskCard');
     card.appendChild(taskInfo());
@@ -25,7 +24,6 @@ function createTaskDOMLoad() {
             if (title.value == "") { return }
             pushTaskToArray(title.value, date.value, list.value);
             card.remove();
-            console.log('bug test');
             refreshPage();
         });
         card.lastChild.lastChild.setAttribute("id", "addTask")

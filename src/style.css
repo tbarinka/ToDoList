@@ -265,7 +265,7 @@ html, body {
 .listItemIconContainer {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
 }
 .listItemIconContainer > button {
     width: 30px;

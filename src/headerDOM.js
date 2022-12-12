@@ -1,11 +1,13 @@
 import './style.css';
 import checklist from './images/clipboard-check-multiple-outline.png'
 
+const content = document.getElementById('content');
 function loadHeader() {
     const header = document.createElement('div');
         header.classList.add('headerContainer');
     header.appendChild(leftHeaderContent());
-    document.body.insertBefore(header,content);
+    let body = document.getElementById('body');
+    body.insertBefore(header,content);
 }
 
 function leftHeaderContent() {
