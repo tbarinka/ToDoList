@@ -10,7 +10,7 @@ function createTaskDOMLoad() {
     const card = document.createElement('div');
         card.classList.add('newTaskCard');
     card.appendChild(taskInfo());
-    card.appendChild(buttonIntegrator('Cancel', 'Add Task'));
+    card.appendChild(taskButtonIntegrator('Cancel', 'Add Task'));
         //cancel button event listener --> removes card from DOM
         card.lastChild.firstChild.addEventListener('click', (event) => {
             card.remove();
@@ -93,7 +93,7 @@ function taskInfo() {
         return div;
     }
 
-function buttonIntegrator(s1, s2) {
+function taskButtonIntegrator(s1, s2) {
     const div = document.createElement('div');
         div.classList.add('cardButtonIntegrator');
     div.appendChild(cardButton(s1));

@@ -95,14 +95,14 @@ function cardInput() {
 function buttonIntegrator(s1, s2) {
     const div = document.createElement('div');
         div.classList.add('cardButtonIntegrator');
-    div.appendChild(cardButton(s1));
+    div.appendChild(listCardButton(s1));
         div.firstChild.setAttribute("id", "listCancel");
-    div.appendChild(cardButton(s2));
+    div.appendChild(listCardButton(s2));
         div.lastChild.setAttribute("id", "listAdd")
 
     return div;
 }
-function cardButton(s) {
+function listCardButton(s) {
     const button = document.createElement('button');
         button.classList.add('newListCardButton');
     const buttonText = document.createElement('div');

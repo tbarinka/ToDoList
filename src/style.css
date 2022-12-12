@@ -1,13 +1,17 @@
-html, body {
+#body {
     padding: 0;
     margin: 0; 
     font-family: Arial, sans-serif;
     height: 100%;
     /*overflow: hidden*/
 }
-/*header*/
-.headerContainer {
+#content {
     display: flex;
+}
+/*header*/
+#headerContainer {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     background-color: #5eead4;
     color: white;
@@ -15,7 +19,6 @@ html, body {
     height: 60px;
     width: 100%;
 }
-
 .leftHeaderContent {
     display: flex;
     align-items: center;
@@ -32,11 +35,20 @@ html, body {
     height: 35px;
     filter: brightness(0) invert(1);
 }
-
-
-#content {
-    display: flex;
+#removeOrgnizerBtn {
+    background-color: white;
+    color: #5eead4;
+    border-radius: 10px;
+    margin-right: 10px;
+    font-size: 32px;
+    height: 40px;
+    box-shadow: none;
+    text-align: center;
+    padding-bottom: 40px;
+    padding-left: 7px;
+    padding-right: 7px;
 }
+
 
 /*sidebar*/
 .sidebar {
